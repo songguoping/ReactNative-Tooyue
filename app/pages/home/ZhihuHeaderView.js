@@ -34,7 +34,7 @@ export default class ZhihuHeaderView extends Component {
             <Swiper
                 style={styles.wrapper}
                 renderPagination={renderPagination}
-                loop={true}
+                loop={false}
                 autoplay={true}
                 autoplayDirection={true}
             >

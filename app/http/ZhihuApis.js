@@ -6,11 +6,20 @@ const HOST = "http://news-at.zhihu.com/api/4/";
 
 
 
-const getDailyList = () => {
+export const getDailyList = () => {
   return HOST+'news/latest';
 };
 
-export {
-    getDailyList,
-}
+export const getThemeList = () => {
+  return HOST+'themes';
+};
+
+export const getSectionsList = () => {
+  return HOST+'sections';
+};
+
+export const getHotList = () => {
+  return HOST+'news/hot';
+};
+
 

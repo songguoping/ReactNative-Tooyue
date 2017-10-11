@@ -8,15 +8,22 @@ import {
     StyleSheet,
     Text,
     View,
-    FlatList
+    FlatList,
+    RefreshControl
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import HttpUtils from '../../http/HttpUtils';
 import ToastUtil from '../../utils/ToastUtil';
 import ZhihuCell from './ZhihuCell';
 import ZhihuHeaderView from './ZhihuHeaderView';
+import ZhihuDailyPage from './ZhihuDailyPage';
+import ZhihuThemePage from './ZhihuThemePage';
+import ZhihuHotPage from './ZhihuHotPage';
+import ZhihuSectionsPage from './ZhihuSectionsPage';
 
 import {getDailyList} from '../../http/ZhihuApis';
+import { colors } from '../../res/styles/common';
 
 export default class Home extends React.Component {
     static navigationOptions = {
@@ -28,52 +35,30 @@ export default class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            zhihuList: [],
-            zhihuTopList:[],
+            categoryIds: [
+                { key: 'daily', value: '日报' },
+                { key: 'theme', value: '主题' },
+                { key: 'sections', value: '专题' },
+                { key: 'hot', value: '热门' },
+            ]
         };
-        this.sendRequest = this.sendRequest.bind(this);
     }
-
-    componentWillMount() {
-        this.sendRequest();
-    }
-
-    sendRequest() {
-        const getDailyUrl = getDailyList();
-        console.log(getDailyUrl);
-        HttpUtils.get(getDailyUrl)
-            .then((json) => {
-                this.setState({
-                    zhihuList: json.stories,
-                    zhihuTopList:json.top_stories
-                });
-            })
-
-    }
-
-    renderItem({item, index}) {
-        return (
-            <ZhihuCell item={item} onPressHandler={this.onItemPress}/>
-        );
-    }
-
-    _header = (list) => {
-        return <ZhihuHeaderView top_stories={list}/>;
-    };
 
     render() {
         return (
-            <View style={styles.container}>
-                <FlatList
-                    horizontal={false}
-                    extraData={this.state}
-                    removeClippedSubviews={false}
-                    data={this.state.zhihuList}
-                    keyExtractor={(item, index) => index}
-                    renderItem={this.renderItem}
-                    ListHeaderComponent={()=>this._header(this.state.zhihuTopList)}
-                />
-            </View>
+            <ScrollableTabView
+                initialPage={0}
+                renderTabBar={() => <ScrollableTabBar tabStyle={styles.tab} textStyle={styles.tabText} />}
+                tabBarBackgroundColor={colors.colorPrimary}
+                tabBarUnderlineStyle={styles.tabIndicator}
+                tabBarActiveTextColor={colors.white}
+                tabBarInactiveTextColor={colors.colorAccent}
+            >
+                <ZhihuDailyPage tabLabel={this.state.categoryIds[0].value} />
+                <ZhihuThemePage tabLabel={this.state.categoryIds[1].value} />
+                <ZhihuSectionsPage tabLabel={this.state.categoryIds[2].value} />
+                <ZhihuHotPage tabLabel={this.state.categoryIds[3].value} />
+            </ScrollableTabView>
         );
     }
 }
@@ -81,7 +66,6 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white'
     },
     userName: {
         flex: 1,
@@ -89,5 +73,15 @@ const styles = StyleSheet.create({
         color: '#87CEFA',
         marginTop: 5,
         marginRight: 5
+    },
+    tab: {
+        paddingBottom: 0
+    },
+    tabText: {
+        fontSize: 16
+    },
+    tabIndicator: {
+        backgroundColor: colors.white,
+        height: 3
     }
 });
