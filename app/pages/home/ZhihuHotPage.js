@@ -49,6 +49,7 @@ export default class ZhihuHotPage extends Component{
 
     }
     renderItem({item, index}) {
+        //转换json数据结构
         var hot = new Hot(item.title,item.thumbnail);
         return (
             <ZhihuCell item={hot} onPressHandler={this.onItemPress}/>

@@ -13,16 +13,14 @@ import {
 } from 'react-native';
 import HttpUtils from '../../http/HttpUtils';
 import ToastUtil from '../../utils/ToastUtil';
-import ZhihuCell from './ZhihuCell';
-import ZhihuHeaderView from './ZhihuHeaderView';
+import SectionsCell from './SectionsCell';
 
-import {getDailyList} from '../../http/ZhihuApis';
+import {getThemeList} from '../../http/ZhihuApis';
 export default class ZhihuThemePage extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            zhihuList: [],
-            zhihuTopList:[],
+            themeList: [],
             refreshing: true,
             loading: false,
         };
@@ -34,13 +32,11 @@ export default class ZhihuThemePage extends Component{
     }
 
     sendRequest() {
-        const getDailyUrl = getDailyList();
-        console.log(getDailyUrl);
-        HttpUtils.get(getDailyUrl)
+        const getThemeUrl = getThemeList();
+        HttpUtils.get(getThemeUrl)
             .then((json) => {
                 this.setState({
-                    zhihuList: json.stories,
-                    zhihuTopList:json.top_stories,
+                    themeList: json.others,
                     refreshing: false,
                 });
             })
@@ -54,25 +50,21 @@ export default class ZhihuThemePage extends Component{
 
     renderItem({item, index}) {
         return (
-            <ZhihuCell item={item} onPressHandler={this.onItemPress}/>
+            <SectionsCell item={item} onPressHandler={this.onItemPress}/>
         );
     }
-
-    _header = (list) => {
-        return <ZhihuHeaderView top_stories={list}/>;
-    };
 
     render() {
         return (
             <View style={styles.container}>
                 <FlatList
+                    numColumns={2}
                     horizontal={false}
                     extraData={this.state}
                     removeClippedSubviews={false}
-                    data={this.state.zhihuList}
+                    data={this.state.themeList}
                     keyExtractor={(item, index) => index}
                     renderItem={this.renderItem}
-                    ListHeaderComponent={()=>this._header(this.state.zhihuTopList)}
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.refreshing}
