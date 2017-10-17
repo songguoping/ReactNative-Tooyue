@@ -22,4 +22,8 @@ export const getHotList = () => {
   return HOST+'news/hot';
 };
 
+export const getDetailInfo = (id) => {
+  return HOST+'news/'+id;
+};
+
 

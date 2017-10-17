@@ -19,6 +19,7 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import Home from './app/pages/home/Home';
 import FuLi from './app/pages/fuli/FuLi';
 import Me from './app/pages/me/Me';
+import WebViwPage from './app/pages/WebViewPage';
 
 const TabContainer = TabNavigator(
     {
@@ -54,6 +55,7 @@ const App = StackNavigator(
                 headerLeft: null
             }
         },
+        Web: { screen: WebViwPage }
     },
     {
         headerMode: 'screen',

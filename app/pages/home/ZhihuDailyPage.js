@@ -17,6 +17,7 @@ import ZhihuCell from './ZhihuCell';
 import ZhihuHeaderView from './ZhihuHeaderView';
 
 import {getDailyList} from '../../http/ZhihuApis';
+import {getDetailInfo} from '../../http/ZhihuApis';
 export default class ZhihuDailyPage extends Component{
     constructor(props) {
         super(props);
@@ -52,10 +53,22 @@ export default class ZhihuDailyPage extends Component{
 
     }
 
-    renderItem({item, index}) {
+    renderItem({item}) {
         return (
-            <ZhihuCell item={item} onPressHandler={this.onItemPress}/>
+            <ZhihuCell item={item} onPressHandler={this.onItemPress.bind(this)}/>
         );
+    }
+
+    onItemPress(item){
+        const { navigate } = this.props.navigation;
+        const url = getDetailInfo(item.id);
+        HttpUtils.get(url)
+            .then((json) => {
+                navigate('Web', { json });
+            })
+            .catch((error)=>{
+
+            });
     }
 
     _header = (list) => {
@@ -71,7 +84,7 @@ export default class ZhihuDailyPage extends Component{
                     removeClippedSubviews={false}
                     data={this.state.zhihuList}
                     keyExtractor={(item, index) => index}
-                    renderItem={this.renderItem}
+                    renderItem={(data)=>this.renderItem(data)}
                     ListHeaderComponent={()=>this._header(this.state.zhihuTopList)}
                     refreshControl={
                         <RefreshControl

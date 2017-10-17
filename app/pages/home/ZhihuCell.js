@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 const ZhihuCell = ({item,onPressHandler})=>(
-    <TouchableOpacity onPress={() => onPressHandler}>
+    <TouchableOpacity onPress={() => onPressHandler(item)}>
         <View style={styles.containerItem}>
             <Image style={styles.itemImg} source={{uri:item.images[0]}}/>
             <Text style={styles.title}>{item.title}</Text>
