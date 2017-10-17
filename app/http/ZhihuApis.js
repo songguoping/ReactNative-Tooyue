@@ -27,3 +27,5 @@ export const getDetailInfo = (id) => {
 };
 
 
+
+

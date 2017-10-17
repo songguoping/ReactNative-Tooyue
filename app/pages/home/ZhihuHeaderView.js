@@ -9,24 +9,47 @@ import {
     Text,
     View,
     Dimensions,
-    Image
+    Image,
+    TouchableWithoutFeedback
 } from 'react-native';
 import Swiper from 'react-native-swiper'
-const { width } = Dimensions.get('window')
+import HttpUtils from '../../http/HttpUtils';
+
+const {width} = Dimensions.get('window');
+import {getDetailInfo} from '../../http/ZhihuApis';
 
 export default class ZhihuHeaderView extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            top_stories:this.props.top_stories,
+        this.state = {
+            top_stories: this.props.top_stories,
         }
     }
+
+    clickBanner(item) {
+        const {navigate} = this.props.navigation;
+        const url = getDetailInfo(item.id);
+        HttpUtils.get(url)
+            .then((json) => {
+                navigate('Web', {json});
+            })
+            .catch((error) => {
+
+            });
+    }
+
     render() {
-        const container = this.state.top_stories.map((item,index)=>{
-            const view =(
-                <View style={styles.slide} key={index} title={<Text numberOfLines={1} style={styles.text}>{item.title}</Text>}>
-                    <Image style={styles.image} source={{uri:item.image}}/>
+        const container = this.state.top_stories.map((item, index) => {
+            const view = (
+                <View style={styles.slide} key={index}
+                      title={<Text numberOfLines={1} style={styles.text}>{item.title}</Text>}>
+                    <TouchableWithoutFeedback key={index} onPress={() => {
+                        this.clickBanner(item)
+                    }}>
+                        <Image style={styles.image} source={{uri: item.image}}/>
+                    </TouchableWithoutFeedback>
                 </View>
+
             );
             return view;
         });
@@ -47,7 +70,7 @@ export default class ZhihuHeaderView extends Component {
 const renderPagination = (index, total, context) => {
     return (
         <View style={styles.paginationStyle}>
-            <Text style={{ color: 'grey' }}>
+            <Text style={{color: 'grey'}}>
                 <Text style={styles.paginationText}>{index + 1}</Text>/{total}
             </Text>
         </View>
@@ -57,21 +80,22 @@ const renderPagination = (index, total, context) => {
 
 const styles = {
     wrapper: {
-        height:150
+        height: 150
     },
     slide: {
-        flex:1,
+        flex: 1,
         backgroundColor: 'transparent'
     },
     text: {
+        position: 'absolute',
         color: 'white',
         fontSize: 20,
         fontWeight: 'bold',
-        bottom:40
+        bottom: 40
     },
     image: {
-        width:width,
-        flex:1
+        width: width,
+        flex: 1,
     },
     paginationStyle: {
         position: 'absolute',

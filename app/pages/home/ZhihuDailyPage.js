@@ -72,7 +72,7 @@ export default class ZhihuDailyPage extends Component{
     }
 
     _header = (list) => {
-        return <ZhihuHeaderView top_stories={list}/>;
+        return <ZhihuHeaderView top_stories={list} {...this.props}/>;
     };
 
     render() {
