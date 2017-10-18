@@ -20,6 +20,7 @@ import Home from './app/pages/home/Home';
 import FuLi from './app/pages/fuli/FuLi';
 import Me from './app/pages/me/Me';
 import WebViwPage from './app/pages/WebViewPage';
+import SectionsFlatList from './app/pages/home/SectionsFlatList';
 
 const TabContainer = TabNavigator(
     {
@@ -55,7 +56,8 @@ const App = StackNavigator(
                 headerLeft: null
             }
         },
-        Web: { screen: WebViwPage }
+        Web: { screen: WebViwPage },
+        SectionsFlatList:{screen:SectionsFlatList},
     },
     {
         headerMode: 'screen',

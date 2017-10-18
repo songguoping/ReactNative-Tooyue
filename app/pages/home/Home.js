@@ -55,9 +55,9 @@ export default class Home extends React.Component {
                 tabBarInactiveTextColor={colors.colorAccent}
             >
                 <ZhihuDailyPage tabLabel={this.state.categoryIds[0].value} {...this.props}/>
-                <ZhihuThemePage tabLabel={this.state.categoryIds[1].value} />
-                <ZhihuSectionsPage tabLabel={this.state.categoryIds[2].value} />
-                <ZhihuHotPage tabLabel={this.state.categoryIds[3].value} />
+                <ZhihuThemePage tabLabel={this.state.categoryIds[1].value} {...this.props}/>
+                <ZhihuSectionsPage tabLabel={this.state.categoryIds[2].value} {...this.props}/>
+                <ZhihuHotPage tabLabel={this.state.categoryIds[3].value} {...this.props}/>
             </ScrollableTabView>
         );
     }

@@ -1,5 +1,5 @@
 /**
- * Created by user on 11/10/17.
+ * Created by user on 18/10/17.
  */
 
 import React, {Component} from 'react';
@@ -9,20 +9,22 @@ import {
     Text,
     View,
     FlatList,
-    RefreshControl
+    RefreshControl,
+    BackHandler
 } from 'react-native';
 import HttpUtils from '../../http/HttpUtils';
 import ToastUtil from '../../utils/ToastUtil';
-import SectionsCell from './SectionsCell';
+import ZhihuCell from './ZhihuCell';
+export default class SectionsFlatList extends Component{
+    static navigationOptions = ({navigation}) => ({
+        title: navigation.state.params.title,
+    });
 
-import {getThemeListInfo,getThemeList} from '../../http/ZhihuApis';
-export default class ZhihuThemePage extends Component{
-    constructor(props) {
+    constructor(props){
         super(props);
         this.state = {
-            themeList: [],
+            listData:[],
             refreshing: true,
-            loading: false,
         };
         this.sendRequest = this.sendRequest.bind(this);
     }
@@ -32,11 +34,11 @@ export default class ZhihuThemePage extends Component{
     }
 
     sendRequest() {
-        const getThemeUrl = getThemeList();
-        HttpUtils.get(getThemeUrl)
+        const { params } = this.props.navigation.state;
+        HttpUtils.get(params.url)
             .then((json) => {
                 this.setState({
-                    themeList: json.others,
+                    listData: json.stories,
                     refreshing: false,
                 });
             })
@@ -48,27 +50,32 @@ export default class ZhihuThemePage extends Component{
 
     }
 
-    renderItem({item, index}) {
+    componentDidMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.goBack);
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.goBack);
+    }
+
+    renderItem({item}) {
+        //转换json数据结构
         return (
-            <SectionsCell item={item} onPressHandler={this.onItemPress.bind(this)}/>
+            <ZhihuCell item={item} onPressHandler={this.onItemPress.bind(this)}/>
         );
     }
 
     onItemPress(item){
-        const { navigate } = this.props.navigation;
-        const url = getThemeListInfo(item.id);
-        navigate('SectionsFlatList', { url ,title:item.name});
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <FlatList
-                    numColumns={2}
                     horizontal={false}
                     extraData={this.state}
                     removeClippedSubviews={false}
-                    data={this.state.themeList}
+                    data={this.state.listData}
                     keyExtractor={(item, index) => index}
                     renderItem={(data)=>this.renderItem(data)}
                     refreshControl={
@@ -81,10 +88,13 @@ export default class ZhihuThemePage extends Component{
             </View>
         );
     }
+
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+
 });
+

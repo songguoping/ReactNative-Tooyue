@@ -16,7 +16,7 @@ import {
 
 const {width} = Dimensions.get('window');
 const SectionsCell = ({item,onPressHandler})=>(
-    <TouchableOpacity onPress={() => onPressHandler}>
+    <TouchableOpacity onPress={() => onPressHandler(item)}>
         <View style={styles.containerItem}>
             <Image style={styles.itemImg} source={{uri:item.thumbnail}}/>
             <Text style={styles.title}>{item.name}</Text>

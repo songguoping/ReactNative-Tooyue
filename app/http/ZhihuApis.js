@@ -26,6 +26,10 @@ export const getDetailInfo = (id) => {
   return HOST+'news/'+id;
 };
 
+export const getThemeListInfo = (id) => {
+  return HOST+'theme/'+id;
+};
+
 
 
 
