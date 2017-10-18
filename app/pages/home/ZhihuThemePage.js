@@ -57,7 +57,7 @@ export default class ZhihuThemePage extends Component{
     onItemPress(item){
         const { navigate } = this.props.navigation;
         const url = getThemeListInfo(item.id);
-        navigate('SectionsFlatList', { url ,title:item.name});
+        navigate('SectionsFlatList', { url ,title:item.name,...this.props});
     }
 
     render() {

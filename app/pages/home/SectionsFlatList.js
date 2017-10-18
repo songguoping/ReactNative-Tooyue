@@ -15,6 +15,7 @@ import {
 import HttpUtils from '../../http/HttpUtils';
 import ToastUtil from '../../utils/ToastUtil';
 import ZhihuCell from './ZhihuCell';
+import {getDetailInfo} from '../../http/ZhihuApis';
 export default class SectionsFlatList extends Component{
     static navigationOptions = ({navigation}) => ({
         title: navigation.state.params.title,
@@ -66,6 +67,15 @@ export default class SectionsFlatList extends Component{
     }
 
     onItemPress(item){
+        const { navigate } = this.props.navigation;
+        const url = getDetailInfo(item.id);
+        HttpUtils.get(url)
+            .then((json) => {
+                navigate('Web', { json });
+            })
+            .catch((error)=>{
+
+            });
     }
 
     render() {

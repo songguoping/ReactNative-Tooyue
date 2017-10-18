@@ -30,6 +30,10 @@ export const getThemeListInfo = (id) => {
   return HOST+'theme/'+id;
 };
 
+export const getSectionListInfo = (id) => {
+  return HOST+'section/'+id;
+};
+
 
 
 

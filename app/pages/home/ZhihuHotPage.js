@@ -15,7 +15,7 @@ import HttpUtils from '../../http/HttpUtils';
 import ToastUtil from '../../utils/ToastUtil';
 import ZhihuCell from './ZhihuCell';
 
-import {getHotList} from '../../http/ZhihuApis';
+import {getDetailInfo,getHotList} from '../../http/ZhihuApis';
 export default class ZhihuHotPage extends Component{
     constructor(props) {
         super(props);
@@ -50,11 +50,23 @@ export default class ZhihuHotPage extends Component{
     }
     renderItem({item, index}) {
         //转换json数据结构
-        var hot = new Hot(item.title,item.thumbnail);
+        var hot = new Hot(item.news_id,item.title,item.thumbnail);
         return (
-            <ZhihuCell item={hot} onPressHandler={this.onItemPress}/>
+            <ZhihuCell item={hot} onPressHandler={this.onItemPress.bind(this)}/>
         );
     }
+    onItemPress(item){
+        const { navigate } = this.props.navigation;
+        const url = getDetailInfo(item.id);
+        HttpUtils.get(url)
+            .then((json) => {
+                navigate('Web', { json });
+            })
+            .catch((error)=>{
+
+            });
+    }
+
 
     render() {
         return (
@@ -65,7 +77,7 @@ export default class ZhihuHotPage extends Component{
                     removeClippedSubviews={false}
                     data={this.state.hotList}
                     keyExtractor={(item, index) => index}
-                    renderItem={this.renderItem}
+                    renderItem={(data)=>this.renderItem(data)}
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.refreshing}
@@ -77,7 +89,8 @@ export default class ZhihuHotPage extends Component{
         );
     }
 }
-function Hot(title,image) {
+function Hot(id,title,image) {
+    this.id=id;
     this.title=title;
     this.images=[image];
 }

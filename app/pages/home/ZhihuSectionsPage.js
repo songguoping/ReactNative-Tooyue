@@ -15,7 +15,7 @@ import HttpUtils from '../../http/HttpUtils';
 import ToastUtil from '../../utils/ToastUtil';
 import SectionsCell from './SectionsCell';
 
-import {getSectionsList} from '../../http/ZhihuApis';
+import {getSectionListInfo,getSectionsList} from '../../http/ZhihuApis';
 export default class ZhihuSectionsPage extends Component{
     constructor(props) {
         super(props);
@@ -50,13 +50,15 @@ export default class ZhihuSectionsPage extends Component{
 
     renderItem({item, index}) {
         return (
-            <SectionsCell item={item} onPressHandler={this.onItemPress}/>
+            <SectionsCell item={item} onPressHandler={this.onItemPress.bind(this)}/>
         );
     }
 
-    _header = (list) => {
-        return <ZhihuHeaderView top_stories={list}/>;
-    };
+    onItemPress(item){
+        const { navigate } = this.props.navigation;
+        const url = getSectionListInfo(item.id);
+        navigate('SectionsFlatList', { url ,title:item.name,...this.props});
+    }
 
     render() {
         return (
@@ -68,7 +70,7 @@ export default class ZhihuSectionsPage extends Component{
                     removeClippedSubviews={false}
                     data={this.state.sectionsList}
                     keyExtractor={(item, index) => index}
-                    renderItem={this.renderItem}
+                    renderItem={(data)=>this.renderItem(data)}
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.refreshing}
