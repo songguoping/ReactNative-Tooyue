@@ -48,6 +48,8 @@ export default class Home extends React.Component {
         return (
             <ScrollableTabView
                 initialPage={0}
+                scrollWithoutAnimation={true}
+                prerenderingSiblingsNumber={1}
                 renderTabBar={() => <ScrollableTabBar tabStyle={styles.tab} textStyle={styles.tabText} />}
                 tabBarBackgroundColor={colors.colorPrimary}
                 tabBarUnderlineStyle={styles.tabIndicator}

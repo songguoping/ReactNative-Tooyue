@@ -13,7 +13,7 @@
 		"react-native-swipe-cards": "^0.1.0",
 		"react-native-swiper": "^1.5.13",
 		"react-native-vector-icons": "^4.4.2",
-		"react-navigation": "^1.0.0-beta.13"
+		"react-navigation": "^1.0.0-beta.15"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",
