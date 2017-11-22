@@ -65,7 +65,7 @@ export default class FuLi extends React.Component {
     static navigationOptions = {
         title: '福利',
         tabBarIcon: ({tintColor}) =>
-            <Icon name="md-home" size={25} color={tintColor}/>
+            <Icon name="md-female" size={25} color={tintColor}/>
     };
 
     constructor(props) {

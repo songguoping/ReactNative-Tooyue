@@ -21,6 +21,7 @@ import FuLi from './app/pages/welfare/Welfare';
 import Me from './app/pages/me/Me';
 import WebViwPage from './app/pages/WebViewPage';
 import SectionsFlatList from './app/pages/home/SectionsFlatList';
+import { colors } from './app/res/styles/common';
 
 const TabContainer = TabNavigator(
     {
@@ -31,8 +32,9 @@ const TabContainer = TabNavigator(
     {
         lazy: true,
         tabBarPosition: 'bottom',
+        swipeEnabled:false,// 是否可以左右滑动切换tab
         tabBarOptions: {
-            activeTintColor: '#3e9ce9',
+            activeTintColor: colors.colorPrimary,
             inactiveTintColor: '#999999',
             showIcon: true,
             style: {
@@ -63,7 +65,7 @@ const App = StackNavigator(
         headerMode: 'screen',
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#3e9ce9'
+                backgroundColor: colors.colorPrimary
             },
             headerTitleStyle: {
                 color: '#fff',

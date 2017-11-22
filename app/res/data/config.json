@@ -16,10 +16,9 @@
     "url": "https://api.github.com/repos/crazycodeboy/",
     "currentRepoUrl": "https://api.github.com/repos/crazycodeboy/GitHubPopular"
   },
-  "author": {
-    "name": "CrazyCodeBoy",
-    "description": "专注于移动开发，分享知识，共享快乐。",
-    "avatar": "http://avatar.csdn.net/1/1/E/1_fengyuzhengfan.jpg",
+  "project": {
+    "name": "GankNews",
+    "description": "这是一个用来查看新闻与妹子的App,它基于React Native支持Android和iOS双平台。",
     "backgroundImg": "http://www.devio.org/io/GitHubPopular/img/for_githubpopular_about_me.jpg",
     "avatar1": "http://www.devio.org/io/GitHubPopular/img/ic_app.png",
     "backgroundImg1": "http://www.rui2.net/uploadfile/output/2015/0322/44b845bf8ae757a2.jpg",
