@@ -16,20 +16,24 @@ import GlobalStyles from '../../res/styles/GlobalStyles'
 import config from '../../res/data/config.json'
 import {MORE_MENU} from '../../common/MoreMenu'
 import AboutCommon from '../../common/AboutCommon'
-
-export default class Me extends React.Component {
-    static navigationOptions = {
+import BaseComponent from '../base/BaseComponent'
+export default class Me extends BaseComponent {
+    static navigationOptions = ({navigation}) => ({
         tabBarLabel: '我的',
         header: null,
+        headerStyle: {
+            backgroundColor: navigation.state.params.theme.navBar
+        },
         tabBarIcon: ({tintColor}) =>
-            <Icon name="md-person" size={25} color={tintColor}/>
-    };
+            <Icon name="md-person" size={25} color={navigation.state.params.theme.styles.tabBarSelectedIcon}/>
+    });
 
     constructor(props) {
         super(props);
         this.aboutCommon = new AboutCommon(props);
         this.state = {
-            project: config.project
+            project: config.project,
+            theme:this.props.navigation.state.theme
         }
     }
 
@@ -41,6 +45,8 @@ export default class Me extends React.Component {
             case MORE_MENU.Favorite:
                 break;
             case MORE_MENU.Custom_Theme:
+                const { navigate } = this.props.navigation;
+                navigate('CustomTheme', {...this.props});
                 break;
             case MORE_MENU.Share:
                 break;
@@ -60,7 +66,7 @@ export default class Me extends React.Component {
             <View style={GlobalStyles.line}/>
             {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.About_Author), require('../../res/images/ic_insert_emoticon.png'), MORE_MENU.About_Author)}
             <View style={GlobalStyles.line}/>
-        </View>
+        </View>;
         return (
             <View style={styles.container}>
                 {this.aboutCommon.render(content, this.state.project)}

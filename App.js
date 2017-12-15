@@ -17,10 +17,17 @@
  */
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import Home from './app/pages/home/Home';
-import FuLi from './app/pages/welfare/Welfare';
-import Me from './app/pages/me/Me';
-import WebViwPage from './app/pages/WebViewPage';
 import SectionsFlatList from './app/pages/home/SectionsFlatList';
+
+import FuLi from './app/pages/welfare/Welfare';
+
+import Me from './app/pages/me/Me';
+import CustomTheme from './app/pages/me/CustomTheme'
+
+import WebViwPage from './app/pages/WebViewPage';
+
+import WelcomePage from './app/pages/WelcomePage';
+
 import { colors } from './app/res/styles/common';
 
 const TabContainer = TabNavigator(
@@ -52,6 +59,7 @@ const TabContainer = TabNavigator(
 
 const App = StackNavigator(
     {
+        WelcomePage: { screen: WelcomePage },
         Home: {
             screen: TabContainer,
             navigationOptions: {
@@ -60,6 +68,7 @@ const App = StackNavigator(
         },
         Web: { screen: WebViwPage },
         SectionsFlatList:{screen:SectionsFlatList},
+        CustomTheme:{screen:CustomTheme},
     },
     {
         headerMode: 'screen',

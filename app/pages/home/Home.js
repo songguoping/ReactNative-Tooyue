@@ -13,17 +13,13 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import HttpUtils from '../../http/HttpUtils';
-import ToastUtil from '../../utils/ToastUtil';
-import ZhihuCell from './ZhihuCell';
-import ZhihuHeaderView from './ZhihuHeaderView';
 import ZhihuDailyPage from './ZhihuDailyPage';
 import ZhihuThemePage from './ZhihuThemePage';
 import ZhihuHotPage from './ZhihuHotPage';
 import ZhihuSectionsPage from './ZhihuSectionsPage';
-
-import {getDailyList} from '../../http/ZhihuApis';
 import { colors } from '../../res/styles/common';
+import ThemeDao from '../../dao/ThemeDao'
+export const ACTION_HOME={A_SHOW_TOAST:'showToast',A_RESTART:'restart',A_THEME:'theme'};
 
 export default class Home extends React.Component {
     static navigationOptions = {
@@ -40,7 +36,8 @@ export default class Home extends React.Component {
                 { key: 'theme', value: '主题' },
                 { key: 'sections', value: '专题' },
                 { key: 'hot', value: '热门' },
-            ]
+            ],
+            theme:this.props.theme
         };
     }
 

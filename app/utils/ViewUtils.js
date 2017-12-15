@@ -24,7 +24,7 @@ export default class ViewUtils {
      * @param expandableIco 右侧图标
      * @return {XML}
      */
-    static getSettingItem(callBack, icon, text, expandableIco) {
+    static getSettingItem(callBack, icon, text, tintStyle, expandableIco) {
         return (
             <TouchableHighlight
                 onPress={callBack}>
@@ -32,7 +32,7 @@ export default class ViewUtils {
                     <View style={{alignItems: 'center', flexDirection: 'row'}}>
                         {icon ?
                             <Image source={icon} resizeMode='stretch'
-                                   style={[{opacity: 1, width: 16, height: 16, marginRight: 10,}]}/> :
+                                   style={[{opacity: 1, width: 16, height: 16, marginRight: 10,},tintStyle]}/> :
                             <View style={{opacity: 1, width: 16, height: 16, marginRight: 10,}}/>
                         }
                         <Text>{text}</Text>
@@ -44,7 +44,7 @@ export default class ViewUtils {
                                width: 22,
                                alignSelf: 'center',
                                opacity: 1
-                           }]}/>
+                           },tintStyle]}/>
                 </View>
             </TouchableHighlight>
         )
