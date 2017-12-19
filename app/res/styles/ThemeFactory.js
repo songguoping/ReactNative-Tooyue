@@ -41,7 +41,7 @@ export default class ThemeFactory{
         return {
             themeColor:themeFlag,
             styles:StyleSheet.create({
-                selectedTitleStyle:{
+                selectedTab:{
                     color:themeFlag,
                 },
                 tabBarSelectedIcon:{

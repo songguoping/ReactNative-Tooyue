@@ -22,11 +22,12 @@ import ThemeDao from '../../dao/ThemeDao'
 export const ACTION_HOME={A_SHOW_TOAST:'showToast',A_RESTART:'restart',A_THEME:'theme'};
 
 export default class Home extends React.Component {
-    static navigationOptions = {
+  /*  static navigationOptions = ({navigation,screenProps}) =>({
         title: '首页',
+        headerStyle:{backgroundColor:screenProps?screenProps.theme.themeColor:colors.colorPrimary},
         tabBarIcon: ({tintColor}) =>
-            <Icon name="md-home" size={25} color={tintColor}/>
-    };
+            <Icon name="md-home" size={25} color={screenProps?screenProps.theme.themeColor:tintColor}/>
+    });*/
 
     constructor(props) {
         super(props);
@@ -37,7 +38,6 @@ export default class Home extends React.Component {
                 { key: 'sections', value: '专题' },
                 { key: 'hot', value: '热门' },
             ],
-            theme:this.props.theme
         };
     }
 
@@ -48,10 +48,10 @@ export default class Home extends React.Component {
                 scrollWithoutAnimation={true}
                 prerenderingSiblingsNumber={1}
                 renderTabBar={() => <ScrollableTabBar tabStyle={styles.tab} textStyle={styles.tabText} />}
-                tabBarBackgroundColor={colors.colorPrimary}
+                tabBarBackgroundColor={this.props.screenProps.theme.themeColor}
                 tabBarUnderlineStyle={styles.tabIndicator}
-                tabBarActiveTextColor={colors.white}
-                tabBarInactiveTextColor={colors.text333}
+                tabBarInactiveTextColor='mintcream'
+                tabBarActiveTextColor='white'
             >
                 <ZhihuDailyPage tabLabel={this.state.categoryIds[0].value} {...this.props}/>
                 <ZhihuThemePage tabLabel={this.state.categoryIds[1].value} {...this.props}/>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     tabIndicator: {
-        backgroundColor: colors.white,
-        height: 3
+        backgroundColor: colors.texte7,
+        height: 2
     }
 });

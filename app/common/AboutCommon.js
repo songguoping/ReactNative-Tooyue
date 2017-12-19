@@ -72,12 +72,12 @@ export default class AboutCommon {
 
     onShare(){
     }
-    render(contentView, params) {
+    render(contentView, params,screenProps) {
         let renderConfig = this.getParallaxRenderConfig(params);
         return (
             <ParallaxScrollView
                 contentBackgroundColor={GlobalStyles.backgroundColor}
-                backgroundColor='#2196F3'
+                backgroundColor={screenProps.theme.themeColor}
                 headerBackgroundColor="#333"
                 stickyHeaderHeight={ STICKY_HEADER_HEIGHT }
                 parallaxHeaderHeight={ PARALLAX_HEADER_HEIGHT }

@@ -8,7 +8,6 @@ import {
     StyleSheet,
     Text,
 } from 'react-native'
-import ThemeDao from '../dao/ThemeDao'
 import SplashScreen from 'react-native-splash-screen'
 export default class WelcomePage extends React.Component {
     constructor(props) {
@@ -16,13 +15,11 @@ export default class WelcomePage extends React.Component {
     }
 
     componentDidMount() {
-        new ThemeDao().getTheme().then((data)=>{
-            this.theme=data;
-        });
+
         this.timer=setTimeout(()=> {
             SplashScreen.hide();
             const {navigate} = this.props.navigation;
-            navigate('Home', {theme:this.theme});
+            navigate('Home');
         }, 500);
     }
     componentWillUnmount(){

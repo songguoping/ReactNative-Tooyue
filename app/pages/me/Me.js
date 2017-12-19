@@ -19,13 +19,7 @@ import AboutCommon from '../../common/AboutCommon'
 import BaseComponent from '../base/BaseComponent'
 export default class Me extends BaseComponent {
     static navigationOptions = ({navigation}) => ({
-        tabBarLabel: '我的',
         header: null,
-        headerStyle: {
-            backgroundColor: navigation.state.params.theme.navBar
-        },
-        tabBarIcon: ({tintColor}) =>
-            <Icon name="md-person" size={25} color={navigation.state.params.theme.styles.tabBarSelectedIcon}/>
     });
 
     constructor(props) {
@@ -33,7 +27,6 @@ export default class Me extends BaseComponent {
         this.aboutCommon = new AboutCommon(props);
         this.state = {
             project: config.project,
-            theme:this.props.navigation.state.theme
         }
     }
 
@@ -60,16 +53,16 @@ export default class Me extends BaseComponent {
 
     render() {
         let content = <View>
-            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.Favorite), require('../../res/images/ic_favorite.png'), MORE_MENU.Favorite)}
+            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.Favorite), require('../../res/images/ic_favorite.png'), MORE_MENU.Favorite, this.props.screenProps.theme.styles.tabBarSelectedIcon)}
             <View style={GlobalStyles.line}/>
-            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.Custom_Theme), require('../../res/images/ic_view_quilt.png'), MORE_MENU.Custom_Theme)}
+            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.Custom_Theme), require('../../res/images/ic_view_quilt.png'), MORE_MENU.Custom_Theme,this.props.screenProps.theme.styles.tabBarSelectedIcon)}
             <View style={GlobalStyles.line}/>
-            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.About_Author), require('../../res/images/ic_insert_emoticon.png'), MORE_MENU.About_Author)}
+            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.About_Author), require('../../res/images/ic_insert_emoticon.png'), MORE_MENU.About_Author,this.props.screenProps.theme.styles.tabBarSelectedIcon)}
             <View style={GlobalStyles.line}/>
         </View>;
         return (
             <View style={styles.container}>
-                {this.aboutCommon.render(content, this.state.project)}
+                {this.aboutCommon.render(content, this.state.project,this.props.screenProps)}
             </View>);
     }
 }

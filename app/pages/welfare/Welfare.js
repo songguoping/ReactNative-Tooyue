@@ -62,12 +62,6 @@ const Cards = [
 var results = [];
 var cardss = [];
 export default class FuLi extends React.Component {
-    static navigationOptions = {
-        title: '福利',
-        tabBarIcon: ({tintColor}) =>
-            <Icon name="md-female" size={25} color={tintColor}/>
-    };
-
     constructor(props) {
         super(props);
         this.state = {

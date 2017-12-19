@@ -1,88 +1,71 @@
 /**
- *
- * Copyright 2015-present reading
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
+ * Created by Rabbit 下午6:58
  */
-import { StackNavigator, TabNavigator } from 'react-navigation';
-import Home from './app/pages/home/Home';
-import SectionsFlatList from './app/pages/home/SectionsFlatList';
 
-import FuLi from './app/pages/welfare/Welfare';
+import React, {Component} from 'react';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    Dimensions,
+    DeviceEventEmitter
+} from 'react-native';
 
-import Me from './app/pages/me/Me';
-import CustomTheme from './app/pages/me/CustomTheme'
+const { width , height} = Dimensions.get('window');
 
-import WebViwPage from './app/pages/WebViewPage';
+import Routers from './app/pages/main/Routers';
+import ThemeDao from './app/dao/ThemeDao'
+import {ACTION_HOME}from './app/pages/home/Home'
+import ThemeFactory,{ThemeFlags} from './app/res/styles/ThemeFactory'
+export default class App extends Component {
+    state={
+        theme:ThemeFactory.createTheme(ThemeFlags.Default)
+    }
+    componentDidMount(){
+        new ThemeDao().getTheme().then((data)=>{
+            this.setState({
+                theme:data
+            })
+        });
 
-import WelcomePage from './app/pages/WelcomePage';
-
-import { colors } from './app/res/styles/common';
-
-const TabContainer = TabNavigator(
-    {
-        Home: { screen: Home },
-        FuLi: { screen: FuLi },
-        Me: { screen: Me },
-    },
-    {
-        lazy: true,
-        tabBarPosition: 'bottom',
-        swipeEnabled:false,// 是否可以左右滑动切换tab
-        tabBarOptions: {
-            activeTintColor: colors.colorPrimary,
-            inactiveTintColor: '#999999',
-            showIcon: true,
-            style: {
-                backgroundColor: '#fff'
-            },
-            indicatorStyle: {
-                opacity: 0
-            },
-            tabStyle: {
-                padding: 0
-            }
+        this.subscription = DeviceEventEmitter.addListener('ACTION_BASE',
+            (action,params) => this.onBaseAction(action,params));
+    };
+    /**
+     * 通知回调事件处理
+     * @param action
+     * @param params
+     */
+    onBaseAction(action,params){
+        if(ACTION_HOME.A_THEME===action){
+            this.onThemeChange(params)
         }
     }
-);
 
-const App = StackNavigator(
-    {
-        WelcomePage: { screen: WelcomePage },
-        Home: {
-            screen: TabContainer,
-            navigationOptions: {
-                headerLeft: null
-            }
-        },
-        Web: { screen: WebViwPage },
-        SectionsFlatList:{screen:SectionsFlatList},
-        CustomTheme:{screen:CustomTheme},
-    },
-    {
-        headerMode: 'screen',
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: colors.colorPrimary
-            },
-            headerTitleStyle: {
-                color: '#fff',
-                fontSize: 20
-            },
-            headerTintColor: '#fff'
-        }
+    componentWillUnmount(){
+        this.subscription.remove();
+    };
+    /**
+     * 当主题改变后更新主题
+     * @param theme
+     */
+    onThemeChange(theme){
+        if(!theme)return;
+        this.setState({
+            theme:theme
+        })
     }
-);
-
-export default App;
+    render() {
+        return(
+            <View style={{flex:1}}>
+                <Routers screenProps={{theme:this.state.theme}}/>
+            </View>
+        )
+    }
+}
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+});
