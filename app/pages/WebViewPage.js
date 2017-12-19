@@ -22,10 +22,10 @@ let canGoBack = false;
 
 
 class WebViewPage extends Component {
-    static navigationOptions = ({navigation}) => ({
-        title: navigation.state.params.json.title,
-        tabBarIcon: ({tintColor}) =>
-            <Icon name="md-home" size={25} color={tintColor}/>,
+    static navigationOptions = ({navigation,screenProps}) => ({
+        headerTitle: navigation.state.params.json.title,
+        headerStyle : {backgroundColor: screenProps ? screenProps.theme.themeColor : colors.colorPrimary},
+        headerTintColor:'white',
         headerRight: (
             <Icon.Button
                 name="md-share"

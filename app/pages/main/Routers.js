@@ -82,7 +82,9 @@ const Routers = StackNavigator(
         SectionsFlatList: {screen: SectionsFlatList},
         CustomTheme: {screen: CustomTheme},
     },
-    {}
+    {
+
+    }
 );
 const TabOptions = (tabBarTitle, iconName, navTitle, screenProps) => {
     const tabBarLabel = (({tintColor, focused}) => {

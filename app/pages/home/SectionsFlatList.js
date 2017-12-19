@@ -17,8 +17,10 @@ import ToastUtil from '../../utils/ToastUtil';
 import ZhihuCell from './ZhihuCell';
 import {getDetailInfo} from '../../http/ZhihuApis';
 export default class SectionsFlatList extends Component{
-    static navigationOptions = ({navigation}) => ({
-        title: navigation.state.params.title,
+    static navigationOptions = ({navigation,screenProps}) => ({
+        headerTitle: navigation.state.params.title,
+        headerStyle : {backgroundColor: screenProps ? screenProps.theme.themeColor : colors.colorPrimary},
+        headerTintColor:'white',
     });
 
     constructor(props){

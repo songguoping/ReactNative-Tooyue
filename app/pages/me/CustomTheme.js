@@ -19,9 +19,11 @@ import ThemeFactory,{ThemeFlags} from '../../res/styles/ThemeFactory'
 import ThemeDao from '../../dao/ThemeDao'
 import {ACTION_HOME} from '../home/Home'
 export default class CustomTheme extends Component {
-    static navigationOptions = {
-        title: '自定义主题',
-    };
+    static navigationOptions = ({navigation,screenProps}) => ({
+        headerTitle: '自定义主题',
+        headerStyle : {backgroundColor: screenProps ? screenProps.theme.themeColor : colors.colorPrimary},
+        headerTintColor:'white',
+    });
     constructor(props){
         super(props);
         this.themeDao=new ThemeDao();
