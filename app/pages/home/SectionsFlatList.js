@@ -15,6 +15,11 @@ import {
 import HttpUtils from '../../http/HttpUtils';
 import ToastUtil from '../../utils/ToastUtil';
 import ZhihuCell from './ZhihuCell';
+import ActionUtils from '../../utils/ActionUtils'
+import FavoriteDao, {FLAG_STORAGE} from "../../dao/FavoriteDao";
+import ProjectModel from '../../model/ProjectModel'
+import AppUtils from '../../utils/AppUtils';
+var favoriteDao = new FavoriteDao(FLAG_STORAGE.flag_news);
 import {getDetailInfo} from '../../http/ZhihuApis';
 export default class SectionsFlatList extends Component{
     static navigationOptions = ({navigation,screenProps}) => ({
@@ -28,8 +33,14 @@ export default class SectionsFlatList extends Component{
         this.state = {
             listData:[],
             refreshing: true,
+            favoriteKeys: [],
         };
         this.sendRequest = this.sendRequest.bind(this);
+    }
+
+    updateState(dic) {
+        if (!this) return;
+        this.setState(dic);
     }
 
     componentWillMount() {
@@ -40,10 +51,8 @@ export default class SectionsFlatList extends Component{
         const { params } = this.props.navigation.state;
         HttpUtils.get(params.url)
             .then((json) => {
-                this.setState({
-                    listData: json.stories,
-                    refreshing: false,
-                });
+                this.items=json.stories;
+                this.getFavoriteKeys();
             })
             .catch((error)=>{
                 this.setState({
@@ -51,6 +60,35 @@ export default class SectionsFlatList extends Component{
                 });
             });
 
+    }
+    /**
+     * 获取本地用户收藏的ProjectItem
+     */
+    getFavoriteKeys() {
+        favoriteDao.getFavoriteKeys().then((keys) => {
+            if (keys) {
+                this.updateState({favoriteKeys: keys});
+            }
+            this.flushFavoriteState();
+        }).catch((error) => {
+            this.flushFavoriteState();
+            console.log(error);
+        });
+    }
+
+    /**
+     * 更新ProjectItem的Favorite状态
+     */
+    flushFavoriteState() {
+        let projectModels = [];
+        let items = this.items;
+        for (var i = 0, len = items.length; i < len; i++) {
+            projectModels.push(new ProjectModel(items[i], AppUtils.checkFavorite(items[i].title, this.state.favoriteKeys)));
+        }
+        this.updateState({
+            refreshing: false,
+            listData: projectModels,
+        });
     }
 
     componentDidMount() {
@@ -62,18 +100,22 @@ export default class SectionsFlatList extends Component{
     }
 
     renderItem({item}) {
-        //转换json数据结构
         return (
-            <ZhihuCell item={item} onPressHandler={this.onItemPress.bind(this)}/>
+            <ZhihuCell
+                key={item.id}
+                projectModel={item}
+                onSelect={()=>this.onItemPress(item.item,item.isFavorite)}
+                onFavorite={(item, isFavorite)=>ActionUtils.onFavorite(favoriteDao,item, isFavorite,FLAG_STORAGE.flag_news)}
+            />
         );
     }
 
-    onItemPress(item){
+    onItemPress(item,isFavorite) {
         const { navigate } = this.props.navigation;
         const url = getDetailInfo(item.id);
         HttpUtils.get(url)
             .then((json) => {
-                navigate('Web', { json });
+                navigate('Web', { json ,isFavorite});
             })
             .catch((error)=>{
 

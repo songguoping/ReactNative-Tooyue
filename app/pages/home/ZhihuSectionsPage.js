@@ -22,7 +22,6 @@ export default class ZhihuSectionsPage extends Component{
         this.state = {
             sectionsList: [],
             refreshing: true,
-            loading: false,
         };
         this.sendRequest = this.sendRequest.bind(this);
     }
