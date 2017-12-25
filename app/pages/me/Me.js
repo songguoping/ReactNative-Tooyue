@@ -32,13 +32,14 @@ export default class Me extends BaseComponent {
 
     onClick(tab) {
         let TargetComponent, params = {...this.props, menuType: tab};
+        const { navigate } = this.props.navigation;
         switch (tab) {
             case MORE_MENU.About_Author:
                 break;
             case MORE_MENU.Favorite:
+                navigate('FavoritePage', {...this.props});
                 break;
             case MORE_MENU.Custom_Theme:
-                const { navigate } = this.props.navigation;
                 navigate('CustomTheme', {...this.props});
                 break;
             case MORE_MENU.Share:

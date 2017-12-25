@@ -97,6 +97,7 @@ export default class ZhihuDailyPage extends Component {
             <ZhihuCell 
                 key={item.id} 
                 projectModel={item}
+                theme={this.props.screenProps.theme}
                 onSelect={()=>this.onItemPress(item.item,item.isFavorite)}
                 onFavorite={(item, isFavorite)=>ActionUtils.onFavorite(favoriteDao,item, isFavorite,FLAG_STORAGE.flag_news)}
             />
@@ -108,7 +109,7 @@ export default class ZhihuDailyPage extends Component {
         const url = getDetailInfo(item.id);
         HttpUtils.get(url)
             .then((json) => {
-                navigate('Web', {json,isFavorite});
+                navigate('Web', {json,isFavorite,item});
             })
             .catch((error) => {
 

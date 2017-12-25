@@ -19,8 +19,10 @@ import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-v
 import FavoriteDao ,{FLAG_STORAGE}from '../dao/FavoriteDao'
 import ProjectModel from '../model/ProjectModel'
 import ZhihuCell from '../pages/home/ZhihuCell'
-import ActionUtils from '../../utils/ActionUtils'
-import {getDetailInfo} from '../../http/ZhihuApis';
+import ActionUtils from '../utils/ActionUtils'
+import {getDetailInfo} from '../http/ZhihuApis';
+import * as GlobalStyles from "../res/styles/GlobalStyles";
+import HttpUtils from "../http/HttpUtils";
 export default class FavoritePage extends BaseComponent {
     static navigationOptions = ({navigation,screenProps}) => ({
         headerTitle: '收藏',
@@ -39,10 +41,9 @@ export default class FavoritePage extends BaseComponent {
             tabBarInactiveTextColor='mintcream'
             tabBarActiveTextColor='white'
             ref="scrollableTabView"
-            tabBarBackgroundColor={this.props.screenProps.themeColor}
+            tabBarBackgroundColor={this.props.screenProps.theme.themeColor}
             initialPage={0}
-            renderTabBar={() => <ScrollableTabBar style={{height: 40, borderWidth: 0, elevation: 2}}
-                                                  tabStyle={{height: 39}}/>}
+            renderTabBar={() => <ScrollableTabBar tabStyle={GlobalStyles.tab} textStyle={GlobalStyles.tabText} />}
         >
             <FavoriteTab {...this.props} tabLabel='新闻' flag={FLAG_STORAGE.flag_news}/>
             <FavoriteTab {...this.props} tabLabel='福利' flag={FLAG_STORAGE.flag_pic}/>
@@ -102,18 +103,7 @@ class FavoriteTab extends Component {
         this.loadData(true);
     }
 
-    onFavorite(item, isFavorite) {
-        ArrayUtils.updateArray(this.unFavoriteItems, item);
-        if (this.unFavoriteItems.length > 0) {
-            if (this.props.flag === FLAG_STORAGE.flag_popular) {
-                DeviceEventEmitter.emit('favoriteChanged_popular');
-            } else {
-                DeviceEventEmitter.emit('favoriteChanged_trending');
-            }
-        }
-    }
-
-    renderItem(item, sectionID, rowID) {
+    renderItem({item}) {
         let CellComponent = this.props.flag === FLAG_STORAGE.flag_news ? ZhihuCell :  <Image style={styles.itemImg} source={{uri:item.url}}/>;
         let {navigator}=this.props;
         return (
@@ -121,9 +111,9 @@ class FavoriteTab extends Component {
                 key={this.props.flag === FLAG_STORAGE.flag_news ? item.id : item._id}
                 onFavorite={(item, isFavorite)=>ActionUtils.onFavorite(this.favoriteDao, item, isFavorite, this.props.flag)}
                 isFavorite={true}
-                theme={this.props.theme}
+                theme={this.props.screenProps.theme}
                 {...{navigator}}
-                onSelect={()=>this.onItemPress(item.item,item.isFavorite,this.componentWillReceiveProps.flag)}
+                onSelect={()=>this.onItemPress(item.item,item.isFavorite,this.props.flag)}
                 projectModel={item}/>
         );
     }
@@ -134,7 +124,7 @@ class FavoriteTab extends Component {
             const url = getDetailInfo(item.id);
             HttpUtils.get(url)
                 .then((json) => {
-                    navigate('Web', { json,isFavorite });
+                    navigate('Web', { json,isFavorite ,item});
                 })
                 .catch((error)=>{
 

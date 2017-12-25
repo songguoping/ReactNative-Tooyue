@@ -16,26 +16,42 @@ import {
 } from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {colors} from '../res/styles/common';
 import LoadingView from '../components/LoadingView';
+import ActionUtils from "../utils/ActionUtils";
+import FavoriteDao, {FLAG_STORAGE} from "../dao/FavoriteDao";
 let canGoBack = false;
-
-
+let isFavorite = false;
+var favoriteDao = new FavoriteDao(FLAG_STORAGE.flag_news);
 class WebViewPage extends Component {
+
     static navigationOptions = ({navigation,screenProps}) => ({
         headerTitle: navigation.state.params.json.title,
         headerStyle : {backgroundColor: screenProps ? screenProps.theme.themeColor : colors.colorPrimary},
         headerTintColor:'white',
         headerRight: (
-            <Icon.Button
-                name="md-share"
-                backgroundColor="transparent"
-                underlayColor="transparent"
-                activeOpacity={0.8}
-                onPress={() => {
-                    navigation.state.params.handleShare();
-                }}
-            />
+            <View style={styles.headerRight}>
+                <Icon.Button
+                    name="md-share"
+                    backgroundColor="transparent"
+                    underlayColor="transparent"
+                    activeOpacity={0.8}
+                    onPress={() => {
+                        navigation.state.params.handleShare();
+                    }}
+                />
+                <MaterialIcon.Button
+                    name={navigation.state.params.favoriteIcon}
+                    backgroundColor="transparent"
+                    underlayColor="transparent"
+                    activeOpacity={0.8}
+                    onPress={() => {
+                        navigation.state.params.handleFavorite();
+                    }}
+                />
+            </View>
+
         )
     });
 
@@ -44,10 +60,16 @@ class WebViewPage extends Component {
         this.state = {
             isShareModal: false
         };
+        isFavorite = this.props.navigation.state.params.isFavorite;
+        this.item = this.props.navigation.state.params.item;
+        this.props.navigation.setParams({
+            handleShare: this.onActionShare,
+            handleFavorite: this.onActionFavorite,
+            favoriteIcon:isFavorite?'favorite':'favorite-border'
+        });
     }
 
     componentDidMount() {
-        this.props.navigation.setParams({handleShare: this.onActionSelected});
         BackHandler.addEventListener('hardwareBackPress', this.goBack);
     }
 
@@ -55,10 +77,17 @@ class WebViewPage extends Component {
         BackHandler.removeEventListener('hardwareBackPress', this.goBack);
     }
 
-    onActionSelected = () => {
+    onActionShare = () => {
         this.setState({
             isShareModal: true
         });
+    };
+    onActionFavorite = () => {
+        isFavorite=!isFavorite;
+        this.props.navigation.setParams({
+            favoriteIcon:isFavorite?'favorite':'favorite-border'
+        });
+        ActionUtils.onFavorite(favoriteDao, this.item, isFavorite, FLAG_STORAGE.flag_news)
     };
 
     onNavigationStateChange = (navState) => {
@@ -130,6 +159,10 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         backgroundColor: '#FFF'
+    },
+    headerRight: {
+        flex: 1,
+        flexDirection: 'row',
     },
     spinner: {
         flex: 1,

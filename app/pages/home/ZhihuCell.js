@@ -11,13 +11,14 @@ import {
     TouchableOpacity,
     Image
 } from 'react-native';
-
+import Icon from 'react-native-vector-icons/Ionicons';
+import CommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 export default class ZhihuCell extends Component{
     constructor(props) {
         super(props);
         this.state = {
             isFavorite: this.props.projectModel.isFavorite,
-            favoriteIcon: this.props.projectModel.isFavorite ? require('../../res/images/ic_star.png') : require('../../res/images/ic_unstar_transparent.png'),
+            favoriteIcon: this.props.projectModel.isFavorite ? 'md-star' : 'md-star-outline',
         };
     }
     componentWillReceiveProps(nextProps) {
@@ -28,7 +29,7 @@ export default class ZhihuCell extends Component{
         this.props.projectModel.isFavorite = isFavorite;
         this.setState({
             isFavorite: isFavorite,
-            favoriteIcon: isFavorite ? require('../../res/images/ic_star.png') : require('../../res/images/ic_unstar_transparent.png')
+            favoriteIcon: isFavorite ? 'md-star' : 'md-star-outline'
         })
     }
 
@@ -43,10 +44,12 @@ export default class ZhihuCell extends Component{
             <TouchableOpacity
                 style={{padding:6}}
                 onPress={()=>this.onPressFavorite()} underlayColor='transparent'>
-                <Image
+                <Icon
                     ref='favoriteIcon'
-                    style={[{width: 22, height: 22,}]}
-                    source={this.state.favoriteIcon}/>
+                    name={this.state.favoriteIcon}
+                    style={[this.props.theme.styles.selectedTab]}
+                    size={25}
+                    />
             </TouchableOpacity>:null;
 
         if (item.images!=null){
@@ -61,7 +64,10 @@ export default class ZhihuCell extends Component{
         }else {
             return <TouchableOpacity onPress={this.props.onSelect}>
                 <View style={styles.containerItem}>
-                    <Image style={styles.itemImg} source={{uri:'https://facebook.github.io/react/logo-og.png'}}/>
+                    <CommunityIcon
+                        name='react'
+                        size={66}
+                    />
                     <Text style={styles.title}>{item.title}</Text>
                     {favoriteButton}
                 </View>

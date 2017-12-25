@@ -35,6 +35,7 @@ import WebViwPage from '../WebViewPage';
 import WelcomePage from '../WelcomePage';
 
 import {colors} from '../../res/styles/common';
+import FavoritePage from "../FavoritePage";
 
 const TabContainer = TabNavigator(
     {
@@ -81,6 +82,7 @@ const Routers = StackNavigator(
         Web: {screen: WebViwPage},
         SectionsFlatList: {screen: SectionsFlatList},
         CustomTheme: {screen: CustomTheme},
+        FavoritePage: {screen: FavoritePage},
     },
     {
 

@@ -31,7 +31,7 @@ export default class ZhihuHeaderView extends Component {
         const url = getDetailInfo(item.id);
         HttpUtils.get(url)
             .then((json) => {
-                navigate('Web', {json});
+                navigate('Web', {json,item});
             })
             .catch((error) => {
 

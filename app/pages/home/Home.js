@@ -19,6 +19,7 @@ import ZhihuHotPage from './ZhihuHotPage';
 import ZhihuSectionsPage from './ZhihuSectionsPage';
 import { colors } from '../../res/styles/common';
 import ThemeDao from '../../dao/ThemeDao'
+import * as GlobalStyles from "../../res/styles/GlobalStyles";
 export const ACTION_HOME={A_SHOW_TOAST:'showToast',A_RESTART:'restart',A_THEME:'theme'};
 
 export default class Home extends React.Component {
@@ -47,7 +48,7 @@ export default class Home extends React.Component {
                 initialPage={0}
                 scrollWithoutAnimation={true}
                 prerenderingSiblingsNumber={1}
-                renderTabBar={() => <ScrollableTabBar tabStyle={styles.tab} textStyle={styles.tabText} />}
+                renderTabBar={() => <ScrollableTabBar tabStyle={GlobalStyles.tab} textStyle={GlobalStyles.tabText} />}
                 tabBarBackgroundColor={this.props.screenProps.theme.themeColor}
                 tabBarUnderlineStyle={styles.tabIndicator}
                 tabBarInactiveTextColor='mintcream'
@@ -72,12 +73,6 @@ const styles = StyleSheet.create({
         color: '#87CEFA',
         marginTop: 5,
         marginRight: 5
-    },
-    tab: {
-        paddingBottom: 0
-    },
-    tabText: {
-        fontSize: 16
     },
     tabIndicator: {
         backgroundColor: colors.texte7,
