@@ -36,6 +36,7 @@ import WelcomePage from '../WelcomePage';
 
 import {colors} from '../../res/styles/common';
 import FavoritePage from "../FavoritePage";
+import PhotoBrowserScene from "../PhotoBrowserScene";
 
 const TabContainer = TabNavigator(
     {
@@ -83,6 +84,7 @@ const Routers = StackNavigator(
         SectionsFlatList: {screen: SectionsFlatList},
         CustomTheme: {screen: CustomTheme},
         FavoritePage: {screen: FavoritePage},
+        Photo: {screen: PhotoBrowserScene}
     },
     {
 

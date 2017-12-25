@@ -23,6 +23,7 @@ import ActionUtils from '../utils/ActionUtils'
 import {getDetailInfo} from '../http/ZhihuApis';
 import * as GlobalStyles from "../res/styles/GlobalStyles";
 import HttpUtils from "../http/HttpUtils";
+import WelfareCell from "./welfare/WelfareCell";
 export default class FavoritePage extends BaseComponent {
     static navigationOptions = ({navigation,screenProps}) => ({
         headerTitle: '收藏',
@@ -45,8 +46,9 @@ export default class FavoritePage extends BaseComponent {
             initialPage={0}
             renderTabBar={() => <ScrollableTabBar tabStyle={GlobalStyles.tab} textStyle={GlobalStyles.tabText} />}
         >
-            <FavoriteTab {...this.props} tabLabel='新闻' flag={FLAG_STORAGE.flag_news}/>
-            <FavoriteTab {...this.props} tabLabel='福利' flag={FLAG_STORAGE.flag_pic}/>
+            <FavoriteTab {...this.props} tabLabel='福利' column={2} flag={FLAG_STORAGE.flag_pic}/>
+            <FavoriteTab {...this.props} tabLabel='新闻' column={1} flag={FLAG_STORAGE.flag_news}/>
+
 
         </ScrollableTabView>;
         return (
@@ -104,11 +106,11 @@ class FavoriteTab extends Component {
     }
 
     renderItem({item}) {
-        let CellComponent = this.props.flag === FLAG_STORAGE.flag_news ? ZhihuCell :  <Image style={styles.itemImg} source={{uri:item.url}}/>;
+        let CellComponent = this.props.flag === FLAG_STORAGE.flag_news ? ZhihuCell : WelfareCell;
         let {navigator}=this.props;
         return (
             <CellComponent
-                key={this.props.flag === FLAG_STORAGE.flag_news ? item.id : item._id}
+                key={this.props.flag === FLAG_STORAGE.flag_news ? item.id : item.item._id}
                 onFavorite={(item, isFavorite)=>ActionUtils.onFavorite(this.favoriteDao, item, isFavorite, this.props.flag)}
                 isFavorite={true}
                 theme={this.props.screenProps.theme}
@@ -119,8 +121,8 @@ class FavoriteTab extends Component {
     }
 
     onItemPress(item,isFavorite,flag) {
+        const { navigate } = this.props.navigation;
         if(flag === FLAG_STORAGE.flag_news){
-            const { navigate } = this.props.navigation;
             const url = getDetailInfo(item.id);
             HttpUtils.get(url)
                 .then((json) => {
@@ -130,7 +132,12 @@ class FavoriteTab extends Component {
 
                 });
         }else {
+            let urls= [];
+            for (var i=0;i<this.state.favoriteList.length;i++){
+                urls.push(this.state.favoriteList[i].item.url)
+            }
 
+            navigate('Photo', {media:urls, index:0})
         }
     }
 
@@ -139,6 +146,7 @@ class FavoriteTab extends Component {
             <FlatList
                 ref="FlatList"
                 horizontal={false}
+                numColumns={this.props.column}
                 extraData={this.state}
                 removeClippedSubviews={false}
                 data={this.state.favoriteList}

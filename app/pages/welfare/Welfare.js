@@ -16,6 +16,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import SwipeCards from './SwipeCards';
 import HttpUtils from '../../http/HttpUtils';
 import {getRandomGirl} from '../../http/GankIoApis';
+import ActionUtils from "../../utils/ActionUtils";
+import {FLAG_STORAGE} from "../../dao/FavoriteDao";
+import FavoriteDao from "../../dao/FavoriteDao";
 
 export const MARGINX = 0.06;
 export const MARGINY = 0.2;
@@ -51,16 +54,8 @@ class NoMoreCards extends Component {
     }
 }
 
-const Cards = [
-    {text: 'Tomato', backgroundColor: 'red'},
-    {text: 'Aubergine', backgroundColor: 'purple'},
-    {text: 'Courgette', backgroundColor: 'green'},
-    {text: 'Blueberry', backgroundColor: 'blue'},
-    {text: 'Umm...', backgroundColor: 'cyan'},
-    {text: 'orange', backgroundColor: 'orange'},
-];
 var results = [];
-var cardss = [];
+var favoriteDao = new FavoriteDao(FLAG_STORAGE.flag_pic);
 export default class FuLi extends React.Component {
     constructor(props) {
         super(props);
@@ -99,6 +94,7 @@ export default class FuLi extends React.Component {
     handleYup(card) {
         remove(results, card);
         this.sendRequest(1);
+        ActionUtils.onFavorite(favoriteDao, card, true, FLAG_STORAGE.flag_pic)
     }
 
     handleNope(card) {
