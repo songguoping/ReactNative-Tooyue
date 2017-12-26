@@ -12,12 +12,17 @@ class PhotoBrowserScene extends Component {
     _goBack = () => {
         //2.点击返回关闭页面
         this.props.navigation.goBack()
-    }
+    };
+
+    onFavorite=(media,index) =>{
+        alert(index)
+    };
+
     render() {
         //3.获取传入的图片等信息
         const { params } = this.props.navigation.state;
-        const media = params.media
-        const index = 0
+        const media = params.media;
+        const index = 0;
         return (
             <PhotoBrowser
                 onBack={this._goBack}
@@ -25,6 +30,7 @@ class PhotoBrowserScene extends Component {
                 initialIndex={index}
                 displayActionButton={true}
                 displayTopBar={true}
+                onActionButton={(media,index)=>this.onFavorite(media, index)}
             />
         );
     }

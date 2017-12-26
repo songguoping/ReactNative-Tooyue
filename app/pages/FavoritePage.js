@@ -133,8 +133,9 @@ class FavoriteTab extends Component {
                 });
         }else {
             let urls= [];
+            //需要符合 react-native-photo-browser 的数据结构
             for (var i=0;i<this.state.favoriteList.length;i++){
-                urls.push(this.state.favoriteList[i].item.url)
+                urls.push({photo:this.state.favoriteList[i].item.url})
             }
 
             navigate('Photo', {media:urls, index:0})
