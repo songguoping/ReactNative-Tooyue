@@ -84,7 +84,9 @@ const Routers = StackNavigator(
         SectionsFlatList: {screen: SectionsFlatList},
         CustomTheme: {screen: CustomTheme},
         FavoritePage: {screen: FavoritePage},
-        Photo: {screen: PhotoBrowserScene}
+        Photo: {
+            screen: PhotoBrowserScene,
+        }
     },
     {
 

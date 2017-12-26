@@ -2,6 +2,15 @@
 # yarn lockfile v1
 
 
+"@ldn0x7dc/react-native-view-pager@https://github.com/ksti/react-native-view-pager":
+  version "0.0.9"
+  resolved "https://github.com/ksti/react-native-view-pager#acf834e446bfc5c7ae1cd845cbd77fd212686f0c"
+  dependencies:
+    react-mixin "^3.0.5"
+    react-native-gesture-responder "0.1.1"
+    react-native-scroller "0.0.6"
+    react-timer-mixin "^0.13.3"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -3459,6 +3468,13 @@ react-devtools-core@^2.5.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-mixin@^3.0.5:
+  version "3.1.1"
+  resolved "http://registry.npm.taobao.org/react-mixin/download/react-mixin-3.1.1.tgz#68749756bfe32699e561372a4aeecb926db72b7f"
+  dependencies:
+    object-assign "^4.0.1"
+    smart-mixin "^2.0.0"
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/react-native-dismiss-keyboard/download/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -3475,11 +3491,32 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
+react-native-gesture-responder@0.1.1:
+  version "0.1.1"
+  resolved "http://registry.npm.taobao.org/react-native-gesture-responder/download/react-native-gesture-responder-0.1.1.tgz#802552d8eb7153c0d81a396e98f4b80b404b6798"
+  dependencies:
+    react-timer-mixin "^0.13.3"
+
 react-native-parallax-scroll-view@^0.20.1:
   version "0.20.1"
   resolved "http://registry.npm.taobao.org/react-native-parallax-scroll-view/download/react-native-parallax-scroll-view-0.20.1.tgz#7fad3411df8632b7c99fed5d0a5c0a8f97007b38"
   dependencies:
     prop-types "^15.6.0"
+
+"react-native-photo-browser@https://github.com/ksti/react-native-photo-browser.git":
+  version "0.2.2"
+  resolved "https://github.com/ksti/react-native-photo-browser.git#87937f1b5533cbdd1cabe605fccb378016afbe81"
+  dependencies:
+    "@ldn0x7dc/react-native-view-pager" "https://github.com/ksti/react-native-view-pager"
+    react-native-gesture-responder "0.1.1"
+    react-native-progress "^3.0.0"
+    react-native-transformable-image "0.0.18"
+
+react-native-progress@^3.0.0:
+  version "3.4.0"
+  resolved "http://registry.npm.taobao.org/react-native-progress/download/react-native-progress-3.4.0.tgz#c002e6efb2f0b82dd6889510e669c492da2718ac"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-native-scrollable-tab-view@^0.8.0:
   version "0.8.0"
@@ -3488,6 +3525,10 @@ react-native-scrollable-tab-view@^0.8.0:
     create-react-class "^15.6.2"
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.3"
+
+react-native-scroller@0.0.6:
+  version "0.0.6"
+  resolved "http://registry.npm.taobao.org/react-native-scroller/download/react-native-scroller-0.0.6.tgz#dea8c89bd1ca2d2445fbb6b3a90960df6c1767ff"
 
 react-native-splash-screen@^2.1.0:
   version "2.1.0"
@@ -3512,6 +3553,12 @@ react-native-tab-view@^0.0.70:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-transformable-image@0.0.18:
+  version "0.0.18"
+  resolved "http://registry.npm.taobao.org/react-native-transformable-image/download/react-native-transformable-image-0.0.18.tgz#00229f2410c443a3a6b5fa53714121ecd882396f"
+  dependencies:
+    react-native-view-transformer "0.0.28"
+
 react-native-vector-icons@^4.4.2:
   version "4.4.2"
   resolved "http://registry.npm.taobao.org/react-native-vector-icons/download/react-native-vector-icons-4.4.2.tgz#090f42ee0396c4cc4eae0ddaa518028ba8df40c7"
@@ -3519,6 +3566,13 @@ react-native-vector-icons@^4.4.2:
     lodash "^4.0.0"
     prop-types "^15.5.10"
     yargs "^8.0.2"
+
+react-native-view-transformer@0.0.28:
+  version "0.0.28"
+  resolved "http://registry.npm.taobao.org/react-native-view-transformer/download/react-native-view-transformer-0.0.28.tgz#01bb8c9e6cfff70a8d400e061c0cd27602662acb"
+  dependencies:
+    react-native-gesture-responder "0.1.1"
+    react-native-scroller "0.0.6"
 
 react-native@^0.48.4:
   version "0.48.4"
@@ -4037,6 +4091,10 @@ slash@^1.0.0:
 slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
+
+smart-mixin@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/smart-mixin/download/smart-mixin-2.0.0.tgz#a34a1055e32a75b30d2b4e3ca323dc99cb53f437"
 
 sntp@1.x.x:
   version "1.0.9"

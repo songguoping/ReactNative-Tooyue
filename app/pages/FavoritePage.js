@@ -105,7 +105,7 @@ class FavoriteTab extends Component {
         this.loadData(true);
     }
 
-    renderItem({item}) {
+    renderItem({item,index}) {
         let CellComponent = this.props.flag === FLAG_STORAGE.flag_news ? ZhihuCell : WelfareCell;
         let {navigator}=this.props;
         return (
@@ -115,12 +115,12 @@ class FavoriteTab extends Component {
                 isFavorite={true}
                 theme={this.props.screenProps.theme}
                 {...{navigator}}
-                onSelect={()=>this.onItemPress(item.item,item.isFavorite,this.props.flag)}
+                onSelect={()=>this.onItemPress(item.item,item.isFavorite,this.props.flag,index)}
                 projectModel={item}/>
         );
     }
 
-    onItemPress(item,isFavorite,flag) {
+    onItemPress(item,isFavorite,flag,index) {
         const { navigate } = this.props.navigation;
         if(flag === FLAG_STORAGE.flag_news){
             const url = getDetailInfo(item.id);
@@ -132,13 +132,9 @@ class FavoriteTab extends Component {
 
                 });
         }else {
-            let urls= [];
-            //需要符合 react-native-photo-browser 的数据结构
-            for (var i=0;i<this.state.favoriteList.length;i++){
-                urls.push({photo:this.state.favoriteList[i].item.url})
-            }
 
-            navigate('Photo', {media:urls, index:0})
+
+            navigate('Photo', {media:this.state.favoriteList, index:index,isFavorite:isFavorite})
         }
     }
 
@@ -152,7 +148,7 @@ class FavoriteTab extends Component {
                 removeClippedSubviews={false}
                 data={this.state.favoriteList}
                 keyExtractor={(item, index) => index}
-                renderItem={(data)=>this.renderItem(data)}
+                renderItem={(data,index)=>this.renderItem(data,index)}
                 refreshControl={
                     <RefreshControl
                         refreshing={this.state.refreshing}
