@@ -62,18 +62,20 @@ const TabContainer = TabNavigator(
         backBehavior: 'none', // 按 back 键是否跳转到第一个Tab(首页)， none 为不跳转
         labelStyle: {
             fontSize: 12,
-            color: "#ff0000"
         },
         tabBarOptions: {
             style: {
                 backgroundColor: 'white',
             },
+            pressOpacity: 0.8,
+            showIcon: true,
         }
     }
 );
 
 const Routers = StackNavigator(
     {
+        WelcomePage:{screen:WelcomePage},
         Home: {
             screen: TabContainer,
             navigationOptions: {
@@ -101,7 +103,7 @@ const TabOptions = (tabBarTitle, iconName, navTitle, screenProps) => {
     });
     const tabBarIcon = (({tintColor, focused}) => {
         return (
-            <Icon name={iconName} size={25}
+            <Icon name={iconName} size={24}
                   style={focused ? screenProps.theme.styles.selectedTab : {color: tintColor}}/>
         )
     });
@@ -121,6 +123,6 @@ const styles = StyleSheet.create({
     tabBarLabel: {
         fontSize: 12,
         paddingBottom: 3
-    }
+    },
 });
 export default Routers;

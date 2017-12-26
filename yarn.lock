@@ -3530,9 +3530,9 @@ react-native-scroller@0.0.6:
   version "0.0.6"
   resolved "http://registry.npm.taobao.org/react-native-scroller/download/react-native-scroller-0.0.6.tgz#dea8c89bd1ca2d2445fbb6b3a90960df6c1767ff"
 
-react-native-splash-screen@^2.1.0:
-  version "2.1.0"
-  resolved "http://registry.npm.taobao.org/react-native-splash-screen/download/react-native-splash-screen-2.1.0.tgz#4e0a5e4e8c32974fe7a3cdb4d9a226d06d9daf4f"
+react-native-splash-screen@^3.0.6:
+  version "3.0.6"
+  resolved "http://registry.npm.taobao.org/react-native-splash-screen/download/react-native-splash-screen-3.0.6.tgz#c0bbf2c8ae40a313c4c7044f55e569414ff68332"
 
 react-native-swipe-cards@^0.1.1:
   version "0.1.1"
@@ -3681,7 +3681,7 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-test-renderer@16.0.0-beta.12:
+react-test-renderer@16.0.0-beta.0:
   version "16.0.0-alpha.0"
   resolved "http://registry.npm.taobao.org/react-test-renderer/download/react-test-renderer-16.0.0-alpha.0.tgz#7b0db448473dd49bd026481033f24112521ad091"
   dependencies:

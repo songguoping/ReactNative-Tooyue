@@ -29,15 +29,15 @@ export default class App extends Component {
             })
         });
 
-        this.subscription = DeviceEventEmitter.addListener('ACTION_BASE',
-            (action,params) => this.onBaseAction(action,params));
+        this.subscription = DeviceEventEmitter.addListener('ACTION_THEME',
+            (action,params) => this.onThemeAction(action,params));
     };
     /**
      * 通知回调事件处理
      * @param action
      * @param params
      */
-    onBaseAction(action,params){
+    onThemeAction(action,params){
         if(ACTION_HOME.A_THEME===action){
             this.onThemeChange(params)
         }

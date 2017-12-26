@@ -12,7 +12,8 @@ import {
     View,
     BackHandler,
     Dimensions,
-    Modal
+    Modal,
+    Platform,
 } from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -32,20 +33,20 @@ class WebViewPage extends Component {
         headerTintColor:'white',
         headerRight: (
             <View style={styles.headerRight}>
-                <Icon.Button
+                <Icon
                     name="md-share"
-                    backgroundColor="transparent"
-                    underlayColor="transparent"
+                    size={22}
+                    style={{padding:8,color:'white'}}
                     activeOpacity={0.8}
                     onPress={() => {
                         navigation.state.params.handleShare();
                     }}
                 />
-                <MaterialIcon.Button
+                <MaterialIcon
+                    style={{padding:8,color:'white'}}
+                    size={22}
                     name={navigation.state.params.favoriteIcon}
-                    backgroundColor="transparent"
-                    underlayColor="transparent"
-                    activeOpacity={0.8}
+                    backgroundColor="white"
                     onPress={() => {
                         navigation.state.params.handleFavorite();
                     }}
@@ -163,6 +164,8 @@ const styles = StyleSheet.create({
     headerRight: {
         flex: 1,
         flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     spinner: {
         flex: 1,
