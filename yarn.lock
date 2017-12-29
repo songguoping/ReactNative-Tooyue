@@ -3681,7 +3681,7 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-test-renderer@16.0.0-beta.0:
+react-test-renderer@16.0.0-alpha.0:
   version "16.0.0-alpha.0"
   resolved "http://registry.npm.taobao.org/react-test-renderer/download/react-test-renderer-16.0.0-alpha.0.tgz#7b0db448473dd49bd026481033f24112521ad091"
   dependencies:

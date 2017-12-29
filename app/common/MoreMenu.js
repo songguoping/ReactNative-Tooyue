@@ -24,7 +24,7 @@ export const MORE_MENU = {
     Remove_Key: '标签移除',
     About_Author: '关于作者',
     About: '关于',
-    Favorite: 'favorite',
+    Favorite: '收藏',
     Feedback: '反馈',
     Share: '分享',
 }

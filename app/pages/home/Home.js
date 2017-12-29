@@ -9,7 +9,8 @@ import {
     Text,
     View,
     FlatList,
-    RefreshControl
+    RefreshControl,
+    StatusBar
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
@@ -44,21 +45,25 @@ export default class Home extends React.Component {
 
     render() {
         return (
-            <ScrollableTabView
-                initialPage={0}
-                scrollWithoutAnimation={true}
-                prerenderingSiblingsNumber={1}
-                renderTabBar={() => <ScrollableTabBar tabStyle={GlobalStyles.tab} textStyle={GlobalStyles.tabText} />}
-                tabBarBackgroundColor={this.props.screenProps.theme.themeColor}
-                tabBarUnderlineStyle={styles.tabIndicator}
-                tabBarInactiveTextColor='mintcream'
-                tabBarActiveTextColor='white'
-            >
-                <ZhihuDailyPage tabLabel={this.state.categoryIds[0].value} {...this.props}/>
-                <ZhihuThemePage tabLabel={this.state.categoryIds[1].value} {...this.props}/>
-                <ZhihuSectionsPage tabLabel={this.state.categoryIds[2].value} {...this.props}/>
-                <ZhihuHotPage tabLabel={this.state.categoryIds[3].value} {...this.props}/>
-            </ScrollableTabView>
+            <View style={styles.container}>
+                <StatusBar
+                    backgroundColor={this.props.screenProps.theme.themeColor}
+                    barStyle="light-content"
+                />
+                <ScrollableTabView
+                    initialPage={0}
+                    renderTabBar={() => <ScrollableTabBar tabStyle={GlobalStyles.tab} textStyle={GlobalStyles.tabText} />}
+                    tabBarBackgroundColor={this.props.screenProps.theme.themeColor}
+                    tabBarUnderlineStyle={styles.tabIndicator}
+                    tabBarInactiveTextColor='mintcream'
+                    tabBarActiveTextColor='white'
+                >
+                    <ZhihuDailyPage tabLabel={this.state.categoryIds[0].value} {...this.props}/>
+                    <ZhihuThemePage tabLabel={this.state.categoryIds[1].value} {...this.props}/>
+                    <ZhihuSectionsPage tabLabel={this.state.categoryIds[2].value} {...this.props}/>
+                    <ZhihuHotPage tabLabel={this.state.categoryIds[3].value} {...this.props}/>
+                </ScrollableTabView>
+            </View>
         );
     }
 }

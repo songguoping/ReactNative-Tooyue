@@ -117,6 +117,10 @@ android {
     }
     buildTypes {
         release {
+            // 是否压缩
+            zipAlignEnabled true
+            //是否调试
+            debuggable false
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

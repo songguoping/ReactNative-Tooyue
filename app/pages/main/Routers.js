@@ -69,6 +69,7 @@ const TabContainer = TabNavigator(
             },
             pressOpacity: 0.8,
             showIcon: true,
+            inactiveTintColor:'gray',
         }
     }
 );

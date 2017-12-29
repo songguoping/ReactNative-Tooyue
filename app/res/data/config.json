@@ -1,27 +1,7 @@
 {
-  "items": [
-    "RNStudyNotes",
-    "GitHubPopular",
-    "TakePhoto",
-    "react-native-awesome",
-    "GroupListView",
-    "react-native-check-box",
-    "react-native-easy-toast",
-    "PUtils",
-    "IncrementalUpdate",
-    "BreakPointUploadUtil"
-  ],
-  "info": {
-    "html_url": "https://github.com/crazycodeboy/",
-    "url": "https://api.github.com/repos/crazycodeboy/",
-    "currentRepoUrl": "https://api.github.com/repos/crazycodeboy/GitHubPopular"
-  },
   "project": {
-    "name": "Tooyue",
-    "description": "这是一个用来查看新闻与妹子的App,它基于React Native支持Android和iOS双平台。",
-    "backgroundImg": "http://www.devio.org/io/GitHubPopular/img/for_githubpopular_about_me.jpg",
-    "avatar1": "http://www.devio.org/io/GitHubPopular/img/ic_app.png",
-    "backgroundImg1": "http://www.rui2.net/uploadfile/output/2015/0322/44b845bf8ae757a2.jpg",
-    "url": "http://www.devio.org/"
+    "name": "途悦",
+    "description": "这是一款上下班途中打发时间的app，主要可以阅读每天的新闻资讯，同时还可以欣赏美女写真，缓解一天的疲劳。它基于React Native支持Android和iOS双平台。",
+    "backgroundImg": "http://p0ufe2pi4.bkt.clouddn.com/tooyue/backgroundImg.jpeg"
   }
 }

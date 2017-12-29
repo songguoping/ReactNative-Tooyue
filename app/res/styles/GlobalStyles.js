@@ -17,7 +17,8 @@ module.exports ={
         backgroundColor: '#f3f3f4',
     },
     tab: {
-        paddingBottom: 0
+        paddingBottom: 0,
+        height: 39
     },
     tabText: {
         fontSize: 16
