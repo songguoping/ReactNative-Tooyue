@@ -42,7 +42,7 @@ export default class ZhihuCell extends Component{
         let item = this.props.projectModel.item;
         let favoriteButton=item?
             <TouchableOpacity
-                style={{padding:6}}
+                style={styles.favorite}
                 onPress={()=>this.onPressFavorite()} underlayColor='transparent'>
                 <Icon
                     ref='favoriteIcon'
@@ -79,14 +79,18 @@ export default class ZhihuCell extends Component{
 const styles = StyleSheet.create({
     containerItem: {
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems:'center',
         backgroundColor: 'white',
         padding: 10,
         borderBottomColor: '#ddd',
         borderBottomWidth: 1,
         justifyContent: 'space-between',
     },
+    favorite:{
+        marginRight:10,
+    },
     title: {
+        flex:1,
         fontSize: 15,
         paddingLeft: 8,
         paddingRight:8,

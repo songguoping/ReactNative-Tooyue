@@ -29,7 +29,6 @@ export default class AboutCommon {
 
     getParallaxRenderConfig(params) {
         let config = {};
-        let avatar = typeof(params.avatar) === 'string' ? {uri: params.avatar} : params.avatar;
         config.renderBackground = () => (
             <View key="background">
                 <Image source={{
@@ -48,7 +47,6 @@ export default class AboutCommon {
         );
         config.renderForeground = () => (
             <View key="parallax-header" style={ styles.parallaxHeader }>
-                <Image style={styles.avatar} source={avatar}/>
                 <Text style={ styles.sectionSpeakerText }>
                     {params.name}
                 </Text>
@@ -92,7 +90,6 @@ export default class AboutCommon {
 
 const window = Dimensions.get('window');
 
-const AVATAR_SIZE = 90;
 const PARALLAX_HEADER_HEIGHT = 270;
 const STICKY_HEADER_HEIGHT = (Platform.OS === 'ios') ? GlobalStyles.nav_bar_height_ios + 20 : GlobalStyles.nav_bar_height_android;
 
@@ -125,12 +122,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         paddingTop: 60
-    },
-    avatar: {
-        width: AVATAR_SIZE,
-        height: AVATAR_SIZE,
-        marginBottom: 5,
-        borderRadius: AVATAR_SIZE / 2
     },
     sectionSpeakerText: {
         color: 'white',

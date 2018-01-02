@@ -9,6 +9,7 @@ import {
     Text,
 } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
+import { NavigationActions } from 'react-navigation'
 export default class WelcomePage extends React.Component {
     constructor(props) {
         super(props);
@@ -18,8 +19,13 @@ export default class WelcomePage extends React.Component {
 
         this.timer=setTimeout(()=> {
             SplashScreen.hide();
-            const {navigate} = this.props.navigation;
-            navigate('Home');
+            const resetAction = NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'Home'}),
+                ]
+            });
+            this.props.navigation.dispatch(resetAction);
         }, 500);
     }
     componentWillUnmount(){
