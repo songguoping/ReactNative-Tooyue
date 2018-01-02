@@ -4,18 +4,15 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
     View,
-    Image,
     FlatList,
     RefreshControl,
-    DeviceEventEmitter
+    Dimensions,
 } from 'react-native';
 import BaseComponent from './base/BaseComponent'
 import {colors} from '../res/styles/common';
-import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view'
+import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import FavoriteDao ,{FLAG_STORAGE}from '../dao/FavoriteDao'
 import ProjectModel from '../model/ProjectModel'
 import ZhihuCell from '../pages/home/ZhihuCell'
@@ -24,6 +21,12 @@ import {getDetailInfo} from '../http/ZhihuApis';
 import * as GlobalStyles from "../res/styles/GlobalStyles";
 import HttpUtils from "../http/HttpUtils";
 import WelfareCell from "./welfare/WelfareCell";
+
+const windowWidth = Dimensions.get('window').width;
+const initialLayout = {
+    height: 0,
+    width: windowWidth,
+};
 export default class FavoritePage extends BaseComponent {
     static navigationOptions = ({navigation,screenProps}) => ({
         headerTitle: '收藏',
@@ -33,24 +36,48 @@ export default class FavoritePage extends BaseComponent {
 
     constructor(props) {
         super(props);
-
+        this.state = {
+            index: 0,
+            routes: [
+                { key: '1', title: '图悦' },
+                { key: '2', title: '途阅' },
+            ],
+        };
     }
 
+    _renderScene = ({ route }) => {
+        switch (route.key) {
+            case '1':
+                return (<FavoriteTab {...this.props}  column={2} flag={FLAG_STORAGE.flag_pic}/>);
+            case '2':
+                return (<FavoriteTab {...this.props}  column={1} flag={FLAG_STORAGE.flag_news}/>);
+            default:
+                return null;
+        }
+    };
+
+    _renderHeader = props => (
+        <TabBar
+            {...props}
+            scrollEnabled
+            indicatorStyle={GlobalStyles.indicator}
+            style={{backgroundColor: this.props.screenProps.theme.themeColor}}
+            tabStyle={styles.tab}
+            labelStyle={GlobalStyles.tabText}
+        />
+    );
+
+    _handleIndexChange = index => this.setState({ index });
+
     render() {
-        let content = <ScrollableTabView
-            tabBarUnderlineStyle={{backgroundColor: '#e7e7e7', height: 2}}
-            tabBarInactiveTextColor='mintcream'
-            tabBarActiveTextColor='white'
-            ref="scrollableTabView"
-            tabBarBackgroundColor={this.props.screenProps.theme.themeColor}
-            initialPage={0}
-            renderTabBar={() => <ScrollableTabBar tabStyle={GlobalStyles.tab} textStyle={GlobalStyles.tabText} />}
-        >
-            <FavoriteTab {...this.props} tabLabel='福利' column={2} flag={FLAG_STORAGE.flag_pic}/>
-            <FavoriteTab {...this.props} tabLabel='新闻' column={1} flag={FLAG_STORAGE.flag_news}/>
-
-
-        </ScrollableTabView>;
+        let content =  <TabViewAnimated
+            style={styles.container}
+            navigationState={this.state}
+            renderScene={this._renderScene}
+            renderHeader={this._renderHeader}
+            onIndexChange={this._handleIndexChange}
+            initialLayout={initialLayout}
+        />;
         return (
             <View style={styles.container}>
                 {content}
@@ -171,6 +198,9 @@ const styles = StyleSheet.create({
     },
     itemImg: {
         flex:1,
+    },
+    tab: {
+        width: windowWidth/2,
     },
 });
 

@@ -42,12 +42,12 @@ const TabContainer = TabNavigator(
     {
         Home: {
             screen: Home,
-            navigationOptions: ({screenProps}) => (TabOptions('首页', 'md-home', '首页', screenProps)),
+            navigationOptions: ({screenProps}) => (TabOptions('途阅', 'md-home', '途阅', screenProps)),
 
         },
         FuLi: {
             screen: FuLi,
-            navigationOptions: ({screenProps}) => (TabOptions('福利', 'md-female', '福利', screenProps)),
+            navigationOptions: ({screenProps}) => (TabOptions('图悦', 'md-female', '图悦', screenProps)),
         },
         Me: {
             screen: Me,

@@ -16,12 +16,13 @@ module.exports ={
         flex: 1,
         backgroundColor: '#f3f3f4',
     },
-    tab: {
-        paddingBottom: 0,
-        height: 39
-    },
     tabText: {
-        fontSize: 16
+        fontSize: 16,
+        color: '#fff',
+        fontWeight: '400',
+    },
+    indicator: {
+        backgroundColor: 'white',
     },
     backgroundColor: '#f3f3f4',
     nav_bar_height_ios:44,
