@@ -19,8 +19,8 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import GlobalStyles from '../res/styles/GlobalStyles'
-import ViewUtils from '../utils/ViewUtils'
+import GlobalStyles from '../../res/styles/GlobalStyles'
+import ViewUtils from '../../utils/ViewUtils'
 
 export default class AboutCommon {
     constructor(props) {
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        height: STICKY_HEADER_HEIGHT,
     },
     parallaxHeader: {
         alignItems: 'center',

@@ -15,7 +15,7 @@ import {
 
 const {width, height} = Dimensions.get('window');
 let marginSize: 8;
-export default class WelfareCell extends Component {
+export default class HappyCell extends Component {
     constructor(props) {
         super(props);
         this.state = {

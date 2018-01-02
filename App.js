@@ -16,7 +16,7 @@ const { width , height} = Dimensions.get('window');
 
 import Routers from './app/pages/main/Routers';
 import ThemeDao from './app/dao/ThemeDao'
-import {ACTION_HOME}from './app/pages/home/Home'
+import {ACTION_HOME}from './app/pages/home/ReadPage'
 import ThemeFactory,{ThemeFlags} from './app/res/styles/ThemeFactory'
 export default class App extends Component {
     state={

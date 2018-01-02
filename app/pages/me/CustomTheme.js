@@ -17,7 +17,7 @@ import {
 import GlobalStyles from '../../res/styles/GlobalStyles'
 import ThemeFactory,{ThemeFlags} from '../../res/styles/ThemeFactory'
 import ThemeDao from '../../dao/ThemeDao'
-import {ACTION_HOME} from '../home/Home'
+import {ACTION_HOME} from '../home/ReadPage'
 export default class CustomTheme extends Component {
     static navigationOptions = ({navigation,screenProps}) => ({
         headerTitle: '自定义主题',

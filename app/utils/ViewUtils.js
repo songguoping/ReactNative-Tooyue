@@ -30,11 +30,7 @@ export default class ViewUtils {
                 onPress={callBack}>
                 <View style={[styles.setting_item_container]}>
                     <View style={{alignItems: 'center', flexDirection: 'row'}}>
-                        {icon ?
-                            <Image source={icon} resizeMode='stretch'
-                                   style={[{opacity: 1, width: 16, height: 16, marginRight: 10,},tintStyle]}/> :
-                            <View style={{opacity: 1, width: 16, height: 16, marginRight: 10,}}/>
-                        }
+                        {icon ?icon : <View style={{opacity: 1, width: 16, height: 16, marginRight: 10,}}/>}
                         <Text>{text}</Text>
                     </View>
                     <Image source={expandableIco ? expandableIco : require('../res/images/ic_tiaozhuan.png')}

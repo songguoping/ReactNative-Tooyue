@@ -22,16 +22,21 @@ import {
 } from 'react-native';
 import {StackNavigator, TabNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Home from '../home/Home';
+//home
+import Read from '../home/ReadPage';
 import SectionsFlatList from '../home/SectionsFlatList';
 
-import FuLi from '../welfare/Welfare';
+//happy
+import Happy from '../welfare/HappyPage';
 
+//about
+import About from '../about/AboutPage';
+
+//me
 import Me from '../me/Me';
 import CustomTheme from '../me/CustomTheme'
 
 import WebViwPage from '../WebViewPage';
-
 import WelcomePage from '../WelcomePage';
 
 import {colors} from '../../res/styles/common';
@@ -40,13 +45,13 @@ import PhotoBrowserScene from "../PhotoBrowserScene";
 
 const TabContainer = TabNavigator(
     {
-        Home: {
-            screen: Home,
+        Read: {
+            screen: Read,
             navigationOptions: ({screenProps}) => (TabOptions('途阅', 'md-home', '途阅', screenProps)),
 
         },
-        FuLi: {
-            screen: FuLi,
+        Happy: {
+            screen: Happy,
             navigationOptions: ({screenProps}) => (TabOptions('图悦', 'md-female', '图悦', screenProps)),
         },
         Me: {
@@ -87,6 +92,7 @@ const Routers = StackNavigator(
         SectionsFlatList: {screen: SectionsFlatList},
         CustomTheme: {screen: CustomTheme},
         FavoritePage: {screen: FavoritePage},
+        About: {screen: About},
         Photo: {
             screen: PhotoBrowserScene,
         }

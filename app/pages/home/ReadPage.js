@@ -22,7 +22,7 @@ const initialLayout = {
     width: windowWidth,
 };
 
-export default class Home extends React.Component {
+export default class ReadPage extends React.Component {
 
     constructor(props) {
         super(props);

@@ -8,14 +8,14 @@ import {
     Text,
     View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import ViewUtils from '../../utils/ViewUtils';
 import GlobalStyles from '../../res/styles/GlobalStyles'
-
-
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import config from '../../res/data/config.json'
 import {MORE_MENU} from '../../common/MoreMenu'
-import AboutCommon from '../../common/AboutCommon'
+import AboutCommon from '../about/AboutCommon'
 import BaseComponent from '../base/BaseComponent'
 export default class Me extends BaseComponent {
     static navigationOptions = ({navigation}) => ({
@@ -34,7 +34,8 @@ export default class Me extends BaseComponent {
         let TargetComponent, params = {...this.props, menuType: tab};
         const { navigate } = this.props.navigation;
         switch (tab) {
-            case MORE_MENU.About_Author:
+            case MORE_MENU.About:
+                navigate('About', {...this.props});
                 break;
             case MORE_MENU.Favorite:
                 navigate('FavoritePage', {...this.props});
@@ -53,12 +54,12 @@ export default class Me extends BaseComponent {
     }
 
     render() {
-        let content = <View>
-            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.Favorite), require('../../res/images/ic_favorite.png'), MORE_MENU.Favorite, this.props.screenProps.theme.styles.tabBarSelectedIcon)}
+        let content = <View >
+            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.Favorite), <MaterialIcon name='favorite-border' size={16} style={[styles.icon,{color:this.props.screenProps.theme.themeColor}]}/>, MORE_MENU.Favorite, this.props.screenProps.theme.styles.tabBarSelectedIcon)}
             <View style={GlobalStyles.line}/>
-            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.Custom_Theme), require('../../res/images/ic_view_quilt.png'), MORE_MENU.Custom_Theme,this.props.screenProps.theme.styles.tabBarSelectedIcon)}
+            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.Custom_Theme), <MaterialCommunityIcon name='theme-light-dark' size={16} style={[styles.icon,{color:this.props.screenProps.theme.themeColor}]}/>, MORE_MENU.Custom_Theme,this.props.screenProps.theme.styles.tabBarSelectedIcon)}
             <View style={GlobalStyles.line}/>
-            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.About_Author), require('../../res/images/ic_insert_emoticon.png'), MORE_MENU.About_Author,this.props.screenProps.theme.styles.tabBarSelectedIcon)}
+            {ViewUtils.getSettingItem(() => this.onClick(MORE_MENU.About),<Icon name='md-settings' size={16} style={[styles.icon,{color:this.props.screenProps.theme.themeColor}]}/>, MORE_MENU.About,this.props.screenProps.theme.styles.tabBarSelectedIcon)}
             <View style={GlobalStyles.line}/>
         </View>;
         return (
@@ -72,6 +73,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-
+    icon:{
+        marginRight:10
+    }
 });
 

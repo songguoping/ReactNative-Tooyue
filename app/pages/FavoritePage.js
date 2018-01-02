@@ -20,7 +20,7 @@ import ActionUtils from '../utils/ActionUtils'
 import {getDetailInfo} from '../http/ZhihuApis';
 import * as GlobalStyles from "../res/styles/GlobalStyles";
 import HttpUtils from "../http/HttpUtils";
-import WelfareCell from "./welfare/WelfareCell";
+import HappyCell from "./welfare/HappyCell";
 
 const windowWidth = Dimensions.get('window').width;
 const initialLayout = {
@@ -133,7 +133,7 @@ class FavoriteTab extends Component {
     }
 
     renderItem({item,index}) {
-        let CellComponent = this.props.flag === FLAG_STORAGE.flag_news ? ZhihuCell : WelfareCell;
+        let CellComponent = this.props.flag === FLAG_STORAGE.flag_news ? ZhihuCell : HappyCell;
         let {navigator}=this.props;
         return (
             <CellComponent

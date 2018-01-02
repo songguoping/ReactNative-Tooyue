@@ -56,7 +56,7 @@ class NoMoreCards extends Component {
 
 var results = [];
 var favoriteDao = new FavoriteDao(FLAG_STORAGE.flag_pic);
-export default class FuLi extends React.Component {
+export default class HappyPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
