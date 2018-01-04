@@ -9,6 +9,7 @@
 	"dependencies": {
 		"react": "16.0.0-alpha.12",
 		"react-native": "^0.48.4",
+		"react-native-device-info": "^0.13.0",
 		"react-native-parallax-scroll-view": "^0.20.1",
 		"react-native-photo-browser": "https://github.com/ksti/react-native-photo-browser.git",
 		"react-native-splash-screen": "^3.0.6",

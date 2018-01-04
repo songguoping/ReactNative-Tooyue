@@ -46,15 +46,6 @@ export default class ViewUtils {
         )
     }
 
-    static getLeftButton(callBack) {
-        return <TouchableOpacity
-            style={{padding: 8}}
-            onPress={callBack}>
-            <Image
-                style={{width: 26, height: 26,}}
-                source={require('../res/images/ic_arrow_back_white_36pt.png')}/>
-        </TouchableOpacity>
-    }
 
     static getRightButton(title, callBack) {
         return <TouchableOpacity
@@ -66,26 +57,6 @@ export default class ViewUtils {
         </TouchableOpacity>
     }
 
-    /**
-     * 获取更多按钮
-     * @param callBack
-     * @returns {XML}
-     */
-    static getMoreButton(callBack) {
-        return <TouchableHighlight
-            underlayColor={'transparent'}
-            ref="moreMenuButton"
-            style={{padding: 5}}
-            onPress={callBack}
-        >
-            <View style={{paddingRight: 8}}>
-                <Image
-                    style={{width: 24, height: 24,}}
-                    source={require('../res/images/ic_more_vert_white_48pt.png')}
-                />
-            </View>
-        </TouchableHighlight>
-    }
 
     /**
      * 获取分享按钮
