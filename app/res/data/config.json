@@ -3,5 +3,11 @@
     "name": "途悦",
     "description": "这是一款上下班途中打发时间的app，主要可以阅读每天的新闻资讯，同时还可以欣赏美女写真，缓解一天的疲劳。它基于React Native支持Android和iOS双平台。",
     "backgroundImg": "http://p0ufe2pi4.bkt.clouddn.com/tooyue/backgroundImg.jpeg"
+  },
+  "author": {
+    "name": "codersong",
+    "about_me": "https://www.codersong.top/about/",
+    "blog": "https://www.codersong.top/",
+    "github": "https://github.com/songguoping",
   }
 }

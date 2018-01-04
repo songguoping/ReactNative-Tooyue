@@ -31,6 +31,7 @@ import Happy from '../welfare/HappyPage';
 
 //about
 import About from '../about/AboutPage';
+import AboutMePage from "../about/AboutMePage";
 
 //me
 import Me from '../me/Me';
@@ -93,6 +94,7 @@ const Routers = StackNavigator(
         CustomTheme: {screen: CustomTheme},
         FavoritePage: {screen: FavoritePage},
         About: {screen: About},
+        AboutMe: {screen: AboutMePage},
         Photo: {
             screen: PhotoBrowserScene,
         }

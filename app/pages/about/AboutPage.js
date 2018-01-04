@@ -15,10 +15,10 @@ import ViewUtils from "../../utils/ViewUtils";
 import {MORE_MENU} from "../../common/MoreMenu";
 import * as GlobalStyles from "../../res/styles/GlobalStyles";
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import Octicon from 'react-native-vector-icons/Octicons';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DeviceInfo from 'react-native-device-info'
+import config from '../../res/data/config.json'
 export default class AboutPage extends Component {
     static navigationOptions = ({navigation, screenProps}) => ({
         headerTitle: '关于',
@@ -36,6 +36,7 @@ export default class AboutPage extends Component {
         const {navigate} = this.props.navigation;
         switch (tab) {
             case MORE_MENU.About_Author:
+                navigate('AboutMe', { author:config.author});
                 break;
             case MORE_MENU.Feedback:
                 break;
