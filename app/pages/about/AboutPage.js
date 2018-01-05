@@ -8,7 +8,8 @@ import {
     StyleSheet,
     Text,
     View,
-    Image
+    Image,
+    NativeModules
 } from 'react-native';
 
 import ViewUtils from "../../utils/ViewUtils";
@@ -39,6 +40,7 @@ export default class AboutPage extends Component {
                 navigate('AboutMe', { author:config.author});
                 break;
             case MORE_MENU.Feedback:
+                NativeModules.feedbackModule.openFeedbackActivity(null);
                 break;
             case MORE_MENU.About_Version:
                 break;
