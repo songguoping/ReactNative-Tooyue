@@ -8,13 +8,13 @@ This is a app that passes the time on the way to commute. It can read daily news
 
 ## Contents
 
-* [App preview](##App preview)
-* [Screenshots](##Screenshots)
-* [Features](##Features)
-* [Requirements](##Requirements)
-* [Dependency Library](##Dependency Library)
+* [Preview](#Preview)
+* [Screenshots](#Screenshots)
+* [Features](#Features)
+* [Requirements](#Requirements)
+* [Library](#Library)
 * [Running](##Running)
-* [TODO List](##TODO List)
+* [TODO](#TODO)
 * [License](##License)
 
 ## App preview
@@ -24,11 +24,9 @@ This is a app that passes the time on the way to commute. It can read daily news
 
 ## Screenshots
 
-<img src="resource/screenshots/tab_home.png" width="280">
-<img src="resource/screenshots/tab_pic.png" width="280">
-<img src="resource/screenshots/tab_me.png" width="280">
-<img src="resource/screenshots/webview.png" width="280">
-<img src="resource/screenshots/my_favorite.png" width="280">
+<img src="resource/screenshots/tab_home.png" width="280"><img src="resource/screenshots/tab_pic.png" width="280"><img src="resource/screenshots/tab_me.png" width="280">
+
+<img src="resource/screenshots/webview.png" width="280"><img src="resource/screenshots/my_favorite.png" width="280">
 
 ## Features
 
@@ -47,7 +45,7 @@ This is a app that passes the time on the way to commute. It can read daily news
 * [react](https://github.com/facebook/react): 16.0.0-alpha.12
 * [react-native](https://github.com/facebook/react-native): 0.48.4
 
-## Dependency Library
+## Library
 
 * [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) - 3000 Customizable Icons for React Native with support for NavBar/TabBar/ToolbarAndroid, image source and full stying
 * [react-native-device-info](https://github.com/rebeccahughes/react-native-device-info) - Device Information for React Native iOS and Android
@@ -76,7 +74,9 @@ This is a app that passes the time on the way to commute. It can read daily news
 * Run `android avd` and start an emulator
 * Run `react-native run-android`
 
-## TODO List
+## TODO
+
+**V1.1.0 planning**
 
 - [ ] QQ、WeChat share
 - [ ] version update

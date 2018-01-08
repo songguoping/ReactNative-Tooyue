@@ -14,7 +14,7 @@
 * [环境需求](##环境需求)
 * [依赖库](##依赖库)
 * [运行](##运行)
-* [计划](##计划)
+* [待办事项](##待办事项)
 * [License](##License)
 
 ## 预览
@@ -76,7 +76,9 @@
 * Run `android avd` and start an emulator
 * Run `react-native run-android`
 
-## 计划
+## 待办事项
+
+**V1.1.0 计划**
 
 - [ ] QQ、微信分享
 - [ ] 版本更新
