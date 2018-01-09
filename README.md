@@ -8,14 +8,14 @@ This is a app that passes the time on the way to commute. It can read daily news
 
 ## Contents
 
-- [Preview](#Preview)
-- [Screenshots](#Screenshots)
-- [Features](#Features)
-- [Requirements](#Requirements)
-- [Library](#Library)
-- [Running](#Running)
-- [TODO](#TODO)
-- [License](#License)
+- [Preview](#preview)
+- [Screenshots](#screenshots)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Library](#library)
+- [Running](#running)
+- [TODO](#todo)
+- [License](#license)
 
 ## App preview
 
