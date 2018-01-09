@@ -2,20 +2,20 @@
 [![Download](https://img.shields.io/badge/Download-v1.0.0-ff69b4.svg) ](https://github.com/songguoping/ReactNative-Tooyue/releases/download/v1.0.0/com.codersong.tooyue_1.0.0.apk)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/songguoping/ReactNative-Tooyue/pulls)
 [![GitHubPopular release](https://img.shields.io/github/release/songguoping/ReactNative-Tooyue.svg?maxAge=2592000?style=flat-square)](https://github.com/songguoping/ReactNative-Tooyue/releases)
-[![语言 中文](https://img.shields.io/badge/语言-中文-red.svg)](README.cn.md)
+[![语言 中文](https://img.shields.io/badge/语言-中文-red.svg)](https://github.com/songguoping/ReactNative-Tooyue/blob/master/README.cn.md)
 
 This is a app that passes the time on the way to commute. It can read daily news and information, as well as enjoy beautiful pictures, relieve the fatigue of a day. It is based on React Native to support both Android and iOS dual platforms.
 
 ## Contents
 
-* [Preview](#Preview)
-* [Screenshots](#Screenshots)
-* [Features](#Features)
-* [Requirements](#Requirements)
-* [Library](#Library)
-* [Running](##Running)
-* [TODO](#TODO)
-* [License](##License)
+- [Preview](#Preview)
+- [Screenshots](#Screenshots)
+- [Features](#Features)
+- [Requirements](#Requirements)
+- [Library](#Library)
+- [Running](#Running)
+- [TODO](#TODO)
+- [License](#License)
 
 ## App preview
 
@@ -85,3 +85,6 @@ This is a app that passes the time on the way to commute. It can read daily news
 ## License
 
 Released under the [MIT License](http://opensource.org/licenses/MIT).
+
+
+
