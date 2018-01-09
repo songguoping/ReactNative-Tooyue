@@ -1,7 +1,7 @@
 # ReactNative-Tooyue
 [![Download](https://img.shields.io/badge/Download-v1.0.0-ff69b4.svg) ](https://github.com/songguoping/ReactNative-Tooyue/releases/download/v1.0.0/com.codersong.tooyue_1.0.0.apk)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/songguoping/ReactNative-Tooyue/pulls)
-[![GitHubPopular release](https://img.shields.io/github/release/songguoping/ReactNative-Tooyue.svg?maxAge=2592000?style=flat-square)](https://github.com/songguoping/ReactNative-Tooyue/releases)
+[![Tooyue release](https://img.shields.io/github/release/songguoping/ReactNative-Tooyue.svg?maxAge=2592000?style=flat-square)](https://github.com/songguoping/ReactNative-Tooyue/releases)
 [![语言 中文](https://img.shields.io/badge/语言-中文-red.svg)](https://github.com/songguoping/ReactNative-Tooyue/blob/master/README.cn.md)
 
 This is a app that passes the time on the way to commute. It can read daily news and information, as well as enjoy beautiful pictures, relieve the fatigue of a day. It is based on React Native to support both Android and iOS dual platforms.
@@ -19,14 +19,14 @@ This is a app that passes the time on the way to commute. It can read daily news
 
 ## App preview
 
-![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/ios_show.m4v)
-![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/android_show.m4v)
+![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/ios_show.gif)
+![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/android_show.gif)
 
 ## Screenshots
 
-<img src="resource/screenshots/tab_home.png" width="280"><img src="resource/screenshots/tab_pic.png" width="280"><img src="resource/screenshots/tab_me.png" width="280">
+<img src="resource/screenshots/tab_home.png" width="280">  <img src="resource/screenshots/tab_pic.png" width="280">  <img src="resource/screenshots/tab_me.png" width="280">
 
-<img src="resource/screenshots/webview.png" width="280"><img src="resource/screenshots/my_favorite.png" width="280">
+<img src="resource/screenshots/webview.png" width="280">  <img src="resource/screenshots/my_favorite.png" width="280">
 
 ## Features
 

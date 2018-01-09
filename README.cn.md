@@ -1,7 +1,7 @@
 # 途悦
 [![Download](https://img.shields.io/badge/Download-v1.0.0-ff69b4.svg) ](https://github.com/songguoping/ReactNative-Tooyue/releases/download/v1.0.0/com.codersong.tooyue_1.0.0.apk)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/songguoping/ReactNative-Tooyue/pulls)
-[![GitHubPopular release](https://img.shields.io/github/release/songguoping/ReactNative-Tooyue.svg?maxAge=2592000?style=flat-square)](https://github.com/songguoping/ReactNative-Tooyue/releases)
+[![Tooyue release](https://img.shields.io/github/release/songguoping/ReactNative-Tooyue.svg?maxAge=2592000?style=flat-square)](https://github.com/songguoping/ReactNative-Tooyue/releases)
 [![language English](https://img.shields.io/badge/language-English-feb252.svg)](https://github.com/songguoping/ReactNative-Tooyue/blob/master/README.md)
 
 这是一款上下班途中打发时间的 app，主要可以阅读每天的新闻资讯，同时还可以欣赏美女写真，缓解一天的疲劳。它基于 React Native 支持 Android 和 iOS 双平台。
@@ -15,18 +15,18 @@
 * [依赖库](#依赖库)
 * [运行](#运行)
 * [待办事项](#待办事项)
-* [License](#License)
+* [License](#license)
 
 ## 预览
 
-![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/ios_show.m4v)
-![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/android_show.m4v)
+![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/ios_show.gif)
+![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/android_show.gif)
 
 ## 截图
 
-<img src="resource/screenshots/tab_home.png" width="280"> <img src="resource/screenshots/tab_pic.png" width="280"> <img src="resource/screenshots/tab_me.png" width="280">
+<img src="resource/screenshots/tab_home.png" width="280">  <img src="resource/screenshots/tab_pic.png" width="280">  <img src="resource/screenshots/tab_me.png" width="280">
 
-<img src="resource/screenshots/webview.png" width="280"> <img src="resource/screenshots/my_favorite.png" width="280">
+<img src="resource/screenshots/webview.png" width="280">  <img src="resource/screenshots/my_favorite.png" width="280">
 
 ## 功能与特性
 
