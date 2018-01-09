@@ -19,8 +19,8 @@ This is a app that passes the time on the way to commute. It can read daily news
 
 ## App preview
 
-![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/ios_show.gif)
-![Preview](http://p0ufe2pi4.bkt.clouddn.com/tooyue/android_show.gif)
+![Preview](resource/gif/ios_show.gif)
+![Preview](resource/gif/android_show.gif)
 
 ## Screenshots
 
