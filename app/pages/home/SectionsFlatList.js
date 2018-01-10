@@ -4,16 +4,13 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
     View,
     FlatList,
     RefreshControl,
     BackHandler
 } from 'react-native';
 import HttpUtils from '../../http/HttpUtils';
-import ToastUtil from '../../utils/ToastUtil';
 import ZhihuCell from './ZhihuCell';
 import ActionUtils from '../../utils/ActionUtils'
 import FavoriteDao, {FLAG_STORAGE} from "../../dao/FavoriteDao";
@@ -89,14 +86,6 @@ export default class SectionsFlatList extends Component{
             refreshing: false,
             listData: projectModels,
         });
-    }
-
-    componentDidMount() {
-        BackHandler.addEventListener('hardwareBackPress', this.goBack);
-    }
-
-    componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this.goBack);
     }
 
     renderItem({item}) {

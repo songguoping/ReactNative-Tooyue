@@ -4,15 +4,12 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
     View,
     FlatList,
     RefreshControl
 } from 'react-native';
 import HttpUtils from '../../http/HttpUtils';
-import ToastUtil from '../../utils/ToastUtil';
 import AppUtils from '../../utils/AppUtils';
 import ActionUtils from '../../utils/ActionUtils'
 import ZhihuCell from './ZhihuCell';

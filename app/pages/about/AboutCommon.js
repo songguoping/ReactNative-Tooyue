@@ -10,13 +10,10 @@ import React, {Component} from 'react';
 import {
     Dimensions,
     Image,
-    ListView,
     Platform,
-    PixelRatio,
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
 } from 'react-native';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import GlobalStyles from '../../res/styles/GlobalStyles'
@@ -33,13 +30,13 @@ export default class AboutCommon {
             <View key="background">
                 <Image source={{
                     uri: params.backgroundImg,
-                    width: window.width,
+                    width: GlobalStyles.window_width,
                     height: PARALLAX_HEADER_HEIGHT
                 }}/>
                 <View style={{
                     position: 'absolute',
                     top: 0,
-                    width: window.width,
+                    width: GlobalStyles.window_width,
                     backgroundColor: 'rgba(0,0,0,.4)',
                     height: PARALLAX_HEADER_HEIGHT
                 }}/>
@@ -87,8 +84,6 @@ export default class AboutCommon {
         );
     }
 }
-
-const window = Dimensions.get('window');
 
 const PARALLAX_HEADER_HEIGHT = 270;
 const STICKY_HEADER_HEIGHT = (Platform.OS === 'ios') ? GlobalStyles.nav_bar_height_ios + 20 : GlobalStyles.nav_bar_height_android;

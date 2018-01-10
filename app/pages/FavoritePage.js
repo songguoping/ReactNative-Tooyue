@@ -89,7 +89,6 @@ export default class FavoritePage extends BaseComponent {
 class FavoriteTab extends Component {
     constructor(props) {
         super(props);
-        this.unFavoriteItems = [];
         this.favoriteDao = new FavoriteDao(this.props.flag);
         this.state = {
             refreshing: false,
@@ -159,8 +158,6 @@ class FavoriteTab extends Component {
 
                 });
         }else {
-
-
             navigate('Photo', {media:this.state.favoriteList, index:index,isFavorite:isFavorite})
         }
     }

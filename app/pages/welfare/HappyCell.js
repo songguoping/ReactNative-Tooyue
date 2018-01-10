@@ -4,17 +4,13 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
-    View,
     Image,
     TouchableOpacity,
     Dimensions
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
-let marginSize: 8;
 export default class HappyCell extends Component {
     constructor(props) {
         super(props);

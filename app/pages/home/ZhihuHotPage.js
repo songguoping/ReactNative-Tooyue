@@ -4,9 +4,7 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
     View,
     FlatList,
     RefreshControl
@@ -14,7 +12,6 @@ import {
 import HttpUtils from '../../http/HttpUtils';
 import AppUtils from '../../utils/AppUtils';
 import ActionUtils from '../../utils/ActionUtils'
-import ToastUtil from '../../utils/ToastUtil';
 import ZhihuCell from './ZhihuCell';
 import ProjectModel from '../../model/ProjectModel'
 import {getDetailInfo,getHotList} from '../../http/ZhihuApis';
@@ -117,7 +114,6 @@ export default class ZhihuHotPage extends Component{
 
             });
     }
-
 
     render() {
         return (

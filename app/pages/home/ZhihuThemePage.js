@@ -4,15 +4,12 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
     View,
     FlatList,
     RefreshControl
 } from 'react-native';
 import HttpUtils from '../../http/HttpUtils';
-import ToastUtil from '../../utils/ToastUtil';
 import SectionsCell from './SectionsCell';
 
 import {getThemeListInfo,getThemeList} from '../../http/ZhihuApis';

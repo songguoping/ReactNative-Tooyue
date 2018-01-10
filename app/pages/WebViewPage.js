@@ -8,14 +8,11 @@ import React, {Component} from 'react';
 import {
     WebView,
     StyleSheet,
-    InteractionManager,
     View,
     BackHandler,
     Dimensions,
     Modal,
-    Platform,
 } from 'react-native';
-import {StackNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {colors} from '../res/styles/common';

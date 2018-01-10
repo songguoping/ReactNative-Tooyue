@@ -4,15 +4,12 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
     Image,
     Dimensions
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-
 import SwipeCards from './SwipeCards';
 import HttpUtils from '../../http/HttpUtils';
 import {getRandomGirl} from '../../http/GankIoApis';

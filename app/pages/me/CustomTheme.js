@@ -6,15 +6,11 @@ import React, {Component} from "react";
 import {
     StyleSheet,
     View,
-    Image,
     Text,
-    Platform,
     ScrollView,
     TouchableHighlight,
-    Modal,
     DeviceEventEmitter
 } from "react-native";
-import GlobalStyles from '../../res/styles/GlobalStyles'
 import ThemeFactory,{ThemeFlags} from '../../res/styles/ThemeFactory'
 import ThemeDao from '../../dao/ThemeDao'
 import {ACTION_HOME} from '../home/ReadPage'

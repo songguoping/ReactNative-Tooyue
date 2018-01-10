@@ -3,18 +3,8 @@
  * @flow
  */
 'use strict';
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 
-import {
-    StyleSheet,
-    Platform,
-    TouchableOpacity,
-    Image,
-    Text,
-    View,
-    Linking,
-
-} from 'react-native'
 export const MORE_MENU = {
     About_Author: '关于作者',
     About_Version: '当前版本',
@@ -24,7 +14,7 @@ export const MORE_MENU = {
     Favorite: '收藏',
     Feedback: '反馈',
     Share: '分享',
-}
+};
 export default class MoreMenu extends Component {
     constructor(props) {
         super(props);

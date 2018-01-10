@@ -28,4 +28,5 @@ module.exports ={
     nav_bar_height_ios:44,
     nav_bar_height_android:50,
     window_height:height,
+    window_width:width,
 };

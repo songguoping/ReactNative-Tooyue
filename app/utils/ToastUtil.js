@@ -9,7 +9,7 @@ const show = (content) => {
     return;
   }
   if (Platform.OS === 'ios') {
-    Alert.alert('哇咔咔提示', content.toString());
+    Alert.alert( content.toString());
   } else {
     ToastAndroid.show(content.toString(), ToastAndroid.SHORT);
   }
@@ -20,7 +20,7 @@ const showLong = (content) => {
     return;
   }
   if (Platform.OS === 'ios') {
-    Alert.alert('哇咔咔提示', content.toString());
+    Alert.alert( content.toString());
   } else {
     ToastAndroid.show(content.toString(), ToastAndroid.LONG);
   }

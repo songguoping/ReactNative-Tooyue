@@ -4,10 +4,7 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
-    View,
     WebView
 } from 'react-native';
 import {colors} from "../../res/styles/common";
