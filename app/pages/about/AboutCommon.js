@@ -67,8 +67,8 @@ export default class AboutCommon {
     }
 
     onShare(){
-        UShare.share("途悦", "这是应用的分享",
-            "http:www.baidu.com","http:www.baidu.com",()=>{},()=>{});
+        UShare.share("途悦", "这是一款上下班途中打发时间的app，主要可以阅读每天的新闻资讯，同时还可以欣赏美女写真，缓解一天的疲劳。它基于React Native支持Android和iOS双平台。",
+            "https://github.com/songguoping/ReactNative-Tooyue","https://github.com/songguoping/ReactNative-Tooyue",()=>{},()=>{});
     }
     render(contentView, params,screenProps) {
         let renderConfig = this.getParallaxRenderConfig(params);
