@@ -1,0 +1,10 @@
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK" "${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK" "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/UMengUShare"
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDKPlugin" "${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ" "${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/WeChat"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/UMengUShare"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"SocialQQ" -l"SocialWeChat" -l"UMSocialLog" -l"c++" -l"sqlite3" -framework "CoreGraphics" -framework "QuartzCore" -framework "SystemConfiguration" -framework "TencentOpenAPI" -framework "UMSocialCore" -framework "UMSocialNetwork" -framework "UShareUI"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
