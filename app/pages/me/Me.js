@@ -42,9 +42,6 @@ export default class Me extends BaseComponent {
             case MORE_MENU.Custom_Theme:
                 navigate('CustomTheme', {...this.props});
                 break;
-            case MORE_MENU.Share:
-                break;
-
         }
         if (TargetComponent) {
             const {navigate} = this.props.navigation;

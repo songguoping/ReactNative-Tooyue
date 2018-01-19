@@ -6,6 +6,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -28,7 +31,22 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+
+        <!--weixin callback-->
+        <activity
+            android:name="com.codersong.tooyue.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        <meta-data
+                android:name="UMENG_APPKEY"
+                android:value="5a4340a48f4a9d3b8000002a"></meta-data>
+        <meta-data
+                android:name="UMENG_CHANNEL"
+                android:value="Channel ID" />
     </application>
 
 </manifest>

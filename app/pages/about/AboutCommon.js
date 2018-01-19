@@ -18,6 +18,7 @@ import {
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import GlobalStyles from '../../res/styles/GlobalStyles'
 import ViewUtils from '../../utils/ViewUtils'
+import UShare from '../../common/UShare'
 
 export default class AboutCommon {
     constructor(props) {
@@ -66,6 +67,8 @@ export default class AboutCommon {
     }
 
     onShare(){
+        UShare.share("途悦", "这是应用的分享",
+            "http:www.baidu.com","http:www.baidu.com",()=>{},()=>{});
     }
     render(contentView, params,screenProps) {
         let renderConfig = this.getParallaxRenderConfig(params);

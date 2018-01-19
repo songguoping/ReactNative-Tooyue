@@ -1,7 +1,11 @@
 package com.codersong.tooyue;
+
 import android.os.Bundle;
-import org.devio.rn.splashscreen.SplashScreen;
+
 import com.facebook.react.ReactActivity;
+import com.jph.u_share.UShare;
+
+import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {
 
@@ -9,6 +13,7 @@ public class MainActivity extends ReactActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.show(this);  // here
         super.onCreate(savedInstanceState);
+        UShare.init(this);
     }
 
     /**
@@ -18,5 +23,11 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "Tooyue";
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        UShare.onRequestPermissionsResult(requestCode,permissions,grantResults);
     }
 }
